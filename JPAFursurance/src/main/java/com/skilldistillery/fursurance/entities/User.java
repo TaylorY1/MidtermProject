@@ -1,4 +1,4 @@
-package com.skilldistillery.fursurance.entities;
+package com.skilldistillery.fursurance.entities;	
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,5 +38,6 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + "]";
 	}
+
 
 }
