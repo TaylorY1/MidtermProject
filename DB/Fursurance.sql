@@ -254,8 +254,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `pet` (`id`, `name`, `gender`, `conditions`, `zodiak`, `birthdate`, `age`, `species_id`, `vaccinated`, `breed_id`, `user_id`) VALUES (1, 'sparky', 'male', NULL, NULL, NULL, 7, 1, NULL, 1, DEFAULT);
-INSERT INTO `pet` (`id`, `name`, `gender`, `conditions`, `zodiak`, `birthdate`, `age`, `species_id`, `vaccinated`, `breed_id`, `user_id`) VALUES (2, 'rex', 'male', NULL, NULL, NULL, 6, 2, NULL, 2, DEFAULT);
+INSERT INTO `pet` (`id`, `name`, `gender`, `conditions`, `zodiak`, `birthdate`, `age`, `species_id`, `vaccinated`, `breed_id`, `user_id`) VALUES (1, 'sparky', 'male', NULL, NULL, NULL, 7, 1, NULL, 1, 1);
+INSERT INTO `pet` (`id`, `name`, `gender`, `conditions`, `zodiak`, `birthdate`, `age`, `species_id`, `vaccinated`, `breed_id`, `user_id`) VALUES (2, 'rex', 'male', NULL, NULL, NULL, 6, 2, NULL, 1, 1);
 
 COMMIT;
 
@@ -275,7 +275,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `premium` (`id`, `name`, `amount`, `quote_id`) VALUES (1, 'bronze', 80.22, DEFAULT);
+INSERT INTO `premium` (`id`, `name`, `amount`, `quote_id`) VALUES (1, 'bronze', 80.22, 1);
 
 COMMIT;
 
