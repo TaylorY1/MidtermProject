@@ -81,7 +81,7 @@
   <ul>
     <li>All information for the requested quote is then retrieved by way of the SpringMVC provided <strong>getNewQuote.do</strong> RequestMapping found in the <strong>QuoteController.java</strong>
     </li>
-    <li>The User is then shown three different quotes</li>
+    <li>The User is then shown the showQuotes.jsp containing three different quotes</li>
 
   </ul>
   <li>
