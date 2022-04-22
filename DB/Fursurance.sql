@@ -43,39 +43,17 @@ CREATE TABLE IF NOT EXISTS `quote` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `pet_id` VARCHAR(45) NULL,
   `deductible` VARCHAR(45) NULL,
-  `risk_score` VARCHAR(45) NULL,
+  `risk_score` DOUBLE NULL,
   `coupon` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `Pet`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `Pet` ;
-
-CREATE TABLE IF NOT EXISTS `Pet` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
-  `gender` VARCHAR(45) NULL,
-  `conditions` VARCHAR(45) NULL,
-  `breed_id` INT NOT NULL,
-  `zodiak` VARCHAR(45) NULL,
-  `birthdate` VARCHAR(45) NULL,
-  `age` INT NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `vaccine`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `vaccine` ;
-
-CREATE TABLE IF NOT EXISTS `vaccine` (
-  `vaccine_id` INT NOT NULL,
-  `has_been_vaxxed` TINYINT NULL,
-  PRIMARY KEY (`vaccine_id`))
+  `user_id` INT NOT NULL,
+  `premium` DOUBLE NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_quote_user1_idx` (`user_id` ASC),
+  CONSTRAINT `fk_quote_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -105,6 +83,45 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `pet`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `pet` ;
+
+CREATE TABLE IF NOT EXISTS `pet` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `gender` VARCHAR(45) NULL,
+  `conditions` VARCHAR(45) NULL,
+  `zodiak` VARCHAR(45) NULL,
+  `birthdate` VARCHAR(45) NULL,
+  `age` INT NOT NULL,
+  `species_id` INT NOT NULL,
+  `vaccinated` TINYINT NULL,
+  `breed_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `breed_id`, `user_id`),
+  INDEX `fk_pet_species_idx` (`species_id` ASC),
+  INDEX `fk_pet_breed1_idx` (`breed_id` ASC),
+  INDEX `fk_pet_user1_idx` (`user_id` ASC),
+  CONSTRAINT `fk_pet_species`
+    FOREIGN KEY (`species_id`)
+    REFERENCES `species` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_pet_breed1`
+    FOREIGN KEY (`breed_id`)
+    REFERENCES `breed` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_pet_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `address`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `address` ;
@@ -118,6 +135,45 @@ CREATE TABLE IF NOT EXISTS `address` (
   `country` VARCHAR(45) NULL,
   `phone` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `vet`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `vet` ;
+
+CREATE TABLE IF NOT EXISTS `vet` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `address_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_vet_address1_idx` (`address_id` ASC),
+  CONSTRAINT `fk_vet_address1`
+    FOREIGN KEY (`address_id`)
+    REFERENCES `address` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `premium`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `premium` ;
+
+CREATE TABLE IF NOT EXISTS `premium` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `amount` DOUBLE NULL,
+  `quote_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_premium_quote1_idx` (`quote_id` ASC),
+  CONSTRAINT `fk_premium_quote1`
+    FOREIGN KEY (`quote_id`)
+    REFERENCES `quote` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
@@ -137,17 +193,17 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `fursurancedb`;
 INSERT INTO `user` (`id`, `quote_id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`) VALUES (1, NULL, 'admin', NULL, NULL, 'admin', 1, NULL);
+INSERT INTO `user` (`id`, `quote_id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`) VALUES (2, NULL, 'test', NULL, NULL, 'tester', 2, NULL);
 
 COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `Pet`
+-- Data for table `quote`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `Pet` (`id`, `name`, `gender`, `conditions`, `breed_id`, `zodiak`, `birthdate`, `age`) VALUES (1, 'sparky', 'male', NULL, 1, NULL, NULL, 7);
-INSERT INTO `Pet` (`id`, `name`, `gender`, `conditions`, `breed_id`, `zodiak`, `birthdate`, `age`) VALUES (2, 'rex', 'male', NULL, 1, NULL, NULL, 6);
+INSERT INTO `quote` (`id`, `pet_id`, `deductible`, `risk_score`, `coupon`, `user_id`, `premium`) VALUES (1, '21', '200', 50, 'no', 2, 120.67);
 
 COMMIT;
 
@@ -189,6 +245,37 @@ INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (17, 'toyger', '2');
 INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (18, 'kinkalow', '2');
 INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (19, 'ragamuffin', '2');
 INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (20, 'korat', '2');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `pet`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fursurancedb`;
+INSERT INTO `pet` (`id`, `name`, `gender`, `conditions`, `zodiak`, `birthdate`, `age`, `species_id`, `vaccinated`, `breed_id`, `user_id`) VALUES (1, 'sparky', 'male', NULL, NULL, NULL, 7, 1, NULL, 1, DEFAULT);
+INSERT INTO `pet` (`id`, `name`, `gender`, `conditions`, `zodiak`, `birthdate`, `age`, `species_id`, `vaccinated`, `breed_id`, `user_id`) VALUES (2, 'rex', 'male', NULL, NULL, NULL, 6, 2, NULL, 2, DEFAULT);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `address`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fursurancedb`;
+INSERT INTO `address` (`id`, `address`, `city`, `state`, `postal_code`, `country`, `phone`) VALUES (1, '11 woof lane', 'London', 'wa', '80111', 'merica', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `premium`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fursurancedb`;
+INSERT INTO `premium` (`id`, `name`, `amount`, `quote_id`) VALUES (1, 'bronze', 80.22, DEFAULT);
 
 COMMIT;
 
