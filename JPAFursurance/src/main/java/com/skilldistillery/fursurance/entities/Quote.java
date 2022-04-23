@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Quote {
@@ -28,9 +30,62 @@ public class Quote {
 	private LocalDateTime quoteDate;
 	
 	private Integer coverage;
-
+	
+	@ManyToOne
+	@JoinColumn(name= "plan_id")
+	private Plan plan;
+	
+	@ManyToOne
+	@JoinColumn(name = "plan_tier_id")
+	private PlanTier tier;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name = "pet_id")
+	private Pet pet;
+	
+	//methods
 	public Quote() {
 		super();
+	}
+
+	public Pet getPet() {
+		return pet;
+	}
+
+	public void setPet(Pet pet) {
+		this.pet = pet;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public PlanTier getTier() {
+		return tier;
+	}
+
+	public void setTier(PlanTier tier) {
+		this.tier = tier;
+	}
+
+	public Plan getPlan() {
+		return plan;
+	}
+
+	public void setPlan(Plan plan) {
+		this.plan = plan;
+	}
+
+	public void setCoverage(Integer coverage) {
+		this.coverage = coverage;
 	}
 
 	public int getId() {

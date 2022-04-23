@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class UserTest {
@@ -41,10 +42,26 @@ class UserTest {
 	}
 
 	@Test
-	void test() {
+	void test1() {
 		assertNotNull(user);
 		assertEquals("admin", user.getUsername());
 		assertEquals("admin", user.getPassword());
+	}
+	@Test
+	@DisplayName("User to address one to one mapping")
+	void test2() {
+		assertNotNull(user.getAddress());
+		
+		assertEquals("London", user.getAddress().getCity());
+	}
+	@Test
+	@DisplayName("User to quote many to one mapping")
+	void test3() {
+		user = em.find(User.class, 2);
+
+		assertNotNull(user.getQuotes());
+		
+		assertTrue( user.getQuotes().size() > 0);
 	}
 
 }

@@ -1,6 +1,8 @@
 package com.skilldistillery.fursurance.entities;
 
+
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -10,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class Pet {
@@ -33,7 +37,12 @@ public class Pet {
 
 	@Column(name = "photo_url")
 	private Integer photoUrl;
+	
+	@OneToMany(mappedBy = "pet")
+	private List<Quote> quotes;
 
+	
+	//methods
 	public Pet() {
 		super();
 	}
@@ -45,6 +54,16 @@ public class Pet {
 	public void setSpecies(Species species) {
 		this.species = species;
 	}
+
+	public List<Quote> getQuotes() {
+		return quotes;
+	}
+
+
+	public void setQuotes(List<Quote> quotes) {
+		this.quotes = quotes;
+	}
+
 
 	public Integer getId() {
 		return id;

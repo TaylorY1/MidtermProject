@@ -47,5 +47,10 @@ class VetTest {
 		assertNotNull(vet);
 		assertEquals("harry",vet.getName());
 	}
+	@Test
+	void test_vet_to_address_mapping() {
+		assertNotNull(vet.getAddress());
+		assertEquals("London",vet.getAddress().getCity());
+	}
 
 }
