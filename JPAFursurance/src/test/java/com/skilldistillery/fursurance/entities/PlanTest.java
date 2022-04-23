@@ -43,7 +43,7 @@ class PlanTest {
 	@Test
 	void test_plan_entity_mappings() {
 		assertNotNull(plan);
-//		assertEquals(200.00, plan.getDeductible());
+		assertEquals(200.00, plan.getDeductible());
 	}
 
 }
