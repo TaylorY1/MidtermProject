@@ -22,6 +22,7 @@
 		<class>com.skilldistillery.fursurance.entities.MedicalCondition</class>
 		<class>com.skilldistillery.fursurance.entities.PlanTier</class>
 
+
 		<properties>
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost:3306/fursurancedb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />

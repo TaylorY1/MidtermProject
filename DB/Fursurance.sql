@@ -221,11 +221,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `vaccination`
+-- Table `vaccine`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `vaccination` ;
+DROP TABLE IF EXISTS `vaccine` ;
 
-CREATE TABLE IF NOT EXISTS `vaccination` (
+CREATE TABLE IF NOT EXISTS `vaccine` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `description` TEXT NULL,
@@ -254,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `pet_vaccination` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_pet_vaccination_vaccination1`
     FOREIGN KEY (`vaccination_id`)
-    REFERENCES `vaccination` (`id`)
+    REFERENCES `vaccine` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -386,7 +386,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (1, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (1, 'silver', 'silver plan', 50, 75, 1000);
 
 COMMIT;
 
@@ -417,6 +417,36 @@ COMMIT;
 START TRANSACTION;
 USE `fursurancedb`;
 INSERT INTO `vet` (`id`, `name`, `address_id`) VALUES (1, 'harry', 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `vaccine`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fursurancedb`;
+INSERT INTO `vaccine` (`id`, `name`, `description`) VALUES (1, 'bordetella', 'desc');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `pet_vaccination`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fursurancedb`;
+INSERT INTO `pet_vaccination` (`id`, `vax_date`, `pet_id`, `vaccination_id`, `term`) VALUES (1, '2016-08-12', 1, 1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `medical_condition`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fursurancedb`;
+INSERT INTO `medical_condition` (`id`, `name`, `description`, `risk_factor`) VALUES (1, 'worms', 'itchy bum', 50);
 
 COMMIT;
 
