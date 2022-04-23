@@ -1,16 +1,14 @@
 package com.skilldistillery.fursurance.entities;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Vaccination {
+public class Vaccine {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +18,7 @@ public class Vaccination {
 
 	private String description;
 
-	public Vaccination() {
+	public Vaccine() {
 		super();
 	}
 
@@ -66,7 +64,7 @@ public class Vaccination {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Vaccination other = (Vaccination) obj;
+		Vaccine other = (Vaccine) obj;
 		return Objects.equals(id, other.id);
 	}
 

@@ -1,6 +1,9 @@
 package com.skilldistillery.fursurance.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.time.LocalDate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -41,9 +44,11 @@ class PetVaccinationTest {
 	}
 
 	@Test
-	void test1() {
+	void test_PetVaccine_entity_mappings() {
+		LocalDate date = LocalDate.parse("2016-08-12");
 		assertNotNull(petVaccination);
-	//	assertEquals(FIXME, Vaccination.getName());
+		assertEquals(1, petVaccination.getVaccinationId());
+		assertEquals(date, petVaccination.getVaxDate());
 	}
 
 }
