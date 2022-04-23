@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Vet {
@@ -15,12 +17,24 @@ public class Vet {
 	
 	private String name;
 	
-	@Column(name = "address_id")
-	private int addressId;
+	@OneToOne
+	@JoinColumn(name ="address_id")
+	private Address address;
 
 	public Vet() {
 		super();
 	}
+
+	
+	public Address getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 
 	public int getId() {
 		return id;
@@ -38,17 +52,11 @@ public class Vet {
 		this.name = name;
 	}
 
-	public int getAddressId() {
-		return addressId;
-	}
-
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
-	}
+	
 
 	@Override
 	public String toString() {
-		return "Vet [id=" + id + ", name=" + name + ", addressId=" + addressId + "]";
+		return "Vet [id=" + id + ", name=" + name + ", addressId=" ;
 	}
 	
 	

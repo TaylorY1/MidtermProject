@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class PlanTest {
@@ -44,6 +45,12 @@ class PlanTest {
 	void test_plan_entity_mappings() {
 		assertNotNull(plan);
 		assertEquals(75, plan.getDeductible());
+	}
+	@Test
+	@DisplayName("plan to quote many to one mapping")
+	void test2() {
+		assertNotNull(plan.getQuotes());
+		assertTrue (plan.getQuotes().size() > 0);
 	}
 
 }

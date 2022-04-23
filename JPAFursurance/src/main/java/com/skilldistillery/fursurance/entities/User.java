@@ -1,10 +1,15 @@
 package com.skilldistillery.fursurance.entities;	
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -25,7 +30,9 @@ public class User {
 	
 	private boolean active;
 	
-	//private Address address;
+	@OneToOne
+	@JoinColumn(name ="address_id")
+	private Address address;
 	
 	private String role;
 	
@@ -34,8 +41,30 @@ public class User {
 	@Column(name="photo_url")
 	private String photoURL;
 
+	@OneToMany(mappedBy = "user")
+	private List<Quote> quotes;
+	
+	
+	
+	//methods
 	public User() {
 	
+	}
+
+	public List<Quote> getQuotes() {
+		return quotes;
+	}
+
+	public void setQuotes(List<Quote> quotes) {
+		this.quotes = quotes;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public int getId() {

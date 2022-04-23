@@ -1,10 +1,13 @@
 package com.skilldistillery.fursurance.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Plan {
@@ -24,8 +27,21 @@ public class Plan {
 	@Column(name="base_coverage")
 	private double baseCoverage;
 
+	@OneToMany(mappedBy = "plan")
+	private List<Quote> quotes;
+	
+	
+	//methods
 	public Plan() {
 		super();
+	}
+
+	public List<Quote> getQuotes() {
+		return quotes;
+	}
+
+	public void setQuotes(List<Quote> quotes) {
+		this.quotes = quotes;
 	}
 
 	public int getId() {
