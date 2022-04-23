@@ -21,14 +21,6 @@ public class PetVaccination {
 	@Column(name = "vax_date")
 	private LocalDate vaxDate;
 	
-	
-	@Column(name = "pet_id")
-	private Integer petId;
-	
-	@Column(name = "vaccination_id")
-	private Integer vaccinationId;
-	
-	
 	private Integer term;
 	
 
@@ -44,18 +36,7 @@ public class PetVaccination {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getPetId() {
-		return petId;
-	}
-	public void setPetId(Integer petId) {
-		this.petId = petId;
-	}
-	public Integer getVaccinationId() {
-		return vaccinationId;
-	}
-	public void setVaccinationId(Integer vaccinationId) {
-		this.vaccinationId = vaccinationId;
-	}
+
 	public Integer getTerm() {
 		return term;
 	}
@@ -80,11 +61,7 @@ public class PetVaccination {
 		PetVaccination other = (PetVaccination) obj;
 		return Objects.equals(id, other.id);
 	}
-	@Override
-	public String toString() {
-		return "PetVaccination [id=" + id + ", vaxDate=" + vaxDate + ", petId=" + petId + ", vaccinationId="
-				+ vaccinationId + ", term=" + term + "]";
-	}
+
 
 
 

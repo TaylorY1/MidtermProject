@@ -1,6 +1,6 @@
-package com.skilldistillery.fursurance.entities;	
+package com.skilldistillery.fursurance.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,31 +8,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Pet {
+
+	@ManyToOne
+	@JoinColumn(name = "species_id")
+	private Species species;
 	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private String name;
-	
+
 	private String gender;
-	
+
 	private String overview;
-	
-	private LocalDateTime birthdate;
-	
-	@Column(name = "species_id")
-	private Integer speciesId;
-	
-	@Column(name = "breed_id")
-	private Integer breedId;
-	
-	@Column(name = "user_id")
-	private Integer userId;
-	
+
+	private LocalDate birthdate;
+
 	@Column(name = "photo_url")
 	private Integer photoUrl;
 
@@ -40,6 +38,13 @@ public class Pet {
 		super();
 	}
 
+	public Species getSpecies() {
+		return species;
+	}
+
+	public void setSpecies(Species species) {
+		this.species = species;
+	}
 
 	public Integer getId() {
 		return id;
@@ -73,36 +78,12 @@ public class Pet {
 		this.overview = overview;
 	}
 
-	public LocalDateTime getBirthdate() {
+	public LocalDate getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(LocalDateTime birthdate) {
+	public void setBirthdate(LocalDate birthdate) {
 		this.birthdate = birthdate;
-	}
-
-	public Integer getSpeciesId() {
-		return speciesId;
-	}
-
-	public void setSpeciesId(Integer speciesId) {
-		this.speciesId = speciesId;
-	}
-
-	public Integer getBreedId() {
-		return breedId;
-	}
-
-	public void setBreedId(Integer breedId) {
-		this.breedId = breedId;
-	}
-
-	public Integer getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
 	}
 
 	public Integer getPhotoUrl() {
@@ -130,11 +111,4 @@ public class Pet {
 		return Objects.equals(id, other.id);
 	}
 
-
-	@Override
-	public String toString() {
-		return "Pet [id=" + id + ", name=" + name + ", gender=" + gender + ", overview=" + overview + ", birthdate="
-				+ birthdate + ", speciesId=" + speciesId + ", breedId=" + breedId + ", userId=" + userId + ", photoUrl="
-				+ photoUrl + "]";
-	}
 }

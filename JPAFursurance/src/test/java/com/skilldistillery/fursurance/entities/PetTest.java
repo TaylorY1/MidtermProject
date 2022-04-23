@@ -41,9 +41,14 @@ class PetTest {
 	}
 
 	@Test
-	void test1() {
+	void test_EntityMapping() {
 		assertNotNull(Pet);
 		assertEquals("sparky", Pet.getName());
+	}
+	@Test
+	void test_Pet_ManyToOne_Species() {
+		assertNotNull(Pet);
+		assertEquals("dog", Pet.getSpecies().getName());
 	}
 
 }
