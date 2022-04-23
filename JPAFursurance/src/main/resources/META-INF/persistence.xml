@@ -13,14 +13,15 @@
 		<class>com.skilldistillery.fursurance.entities.Quote</class>
 		<class>com.skilldistillery.fursurance.entities.Plan</class>
 		<class>com.skilldistillery.fursurance.entities.Address</class>
-		<class>com.skilldistillery.fursurance.entities.PlanTier</class>
-		<!-- <class>com.skilldistillery.fursurance.entities.Vet</class>
+		<class>com.skilldistillery.fursurance.entities.Vet</class>
 		<class>com.skilldistillery.fursurance.entities.Vaccination</class>
 		<class>com.skilldistillery.fursurance.entities.PetVaccination</class>
 		<class>com.skilldistillery.fursurance.entities.Pet</class>
 		<class>com.skilldistillery.fursurance.entities.Species</class>
 		<class>com.skilldistillery.fursurance.entities.Breed</class>
-		<class>com.skilldistillery.fursurance.entities.MedicalCondition</class> -->
+		<class>com.skilldistillery.fursurance.entities.MedicalCondition</class>
+		<class>com.skilldistillery.fursurance.entities.PlanTier</class>
+
 
 		<properties>
 			<property name="javax.persistence.jdbc.url"
