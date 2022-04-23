@@ -2,7 +2,6 @@ package com.skilldistillery.fursurance.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -43,9 +42,14 @@ class BreedTest {
 	}
 
 	@Test
-	void test() {
+	void test_Entity_mapping() {
 		assertNotNull(breed);
 		assertEquals("chihuahua",breed.getName());
+	}
+	@Test
+	void test_Breed_ManyToOne_Species() {
+		assertNotNull(breed);
+		assertEquals(1,breed.getSpecies().getId());
 	}
 
 }

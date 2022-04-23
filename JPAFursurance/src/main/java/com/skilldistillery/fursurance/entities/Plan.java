@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Plan {
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

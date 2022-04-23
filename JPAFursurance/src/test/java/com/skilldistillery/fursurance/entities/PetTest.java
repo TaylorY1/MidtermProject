@@ -42,15 +42,22 @@ class PetTest {
 	}
 
 	@Test
-	void test1() {
+	void test_EntityMapping() {
 		assertNotNull(Pet);
 		assertEquals("sparky", Pet.getName());
 	}
 	@Test
+
 	@DisplayName("pet to quote many to one mapping")
 	void test2() {
 		assertNotNull(Pet.getQuotes());
 		assertTrue( Pet.getQuotes().size() > 0);
+	}
+
+	void test_Pet_ManyToOne_Species() {
+		assertNotNull(Pet);
+		assertEquals("dog", Pet.getSpecies().getName());
+
 	}
 
 }

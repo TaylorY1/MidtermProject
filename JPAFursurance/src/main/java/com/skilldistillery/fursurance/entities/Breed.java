@@ -5,21 +5,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Breed {
+	
+	@ManyToOne 
+	@JoinColumn(name = "species_id")
+	private Species species;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	private String name;
-	
-	@Column(name = "species_id")
-	private int speciesId;
 
 	public Breed() {
 		super();
+	}
+
+	public Species getSpecies() {
+		return species;
+	}
+
+	public void setSpecies(Species species) {
+		this.species = species;
 	}
 
 	public int getId() {
@@ -38,18 +49,12 @@ public class Breed {
 		this.name = name;
 	}
 
-	public int getSpeciesId() {
-		return speciesId;
-	}
-
-	public void setSpeciesId(int speciesId) {
-		this.speciesId = speciesId;
-	}
 
 	@Override
 	public String toString() {
-		return "Breed [id=" + id + ", name=" + name + ", speciesId=" + speciesId + "]";
+		return "Breed [id=" + id + ", name=" + name;
 	}
+
 
 	
 }
