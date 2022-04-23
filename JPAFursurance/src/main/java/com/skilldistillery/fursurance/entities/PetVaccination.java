@@ -1,6 +1,6 @@
 package com.skilldistillery.fursurance.entities;	
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -19,7 +19,7 @@ public class PetVaccination {
 	private Integer id;
 
 	@Column(name = "vax_date")
-	private LocalDateTime vaxDate;
+	private LocalDate vaxDate;
 	
 	
 	@Column(name = "pet_id")
@@ -32,7 +32,7 @@ public class PetVaccination {
 	private Integer term;
 	
 
-	public LocalDateTime getVaxDate() {
+	public LocalDate getVaxDate() {
 		return vaxDate;
 	}
 	public PetVaccination() {
@@ -62,7 +62,7 @@ public class PetVaccination {
 	public void setTerm(Integer term) {
 		this.term = term;
 	}
-	public void setVaxDate(LocalDateTime vaxDate) {
+	public void setVaxDate(LocalDate vaxDate) {
 		this.vaxDate = vaxDate;
 	}
 	@Override

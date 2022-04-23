@@ -1,6 +1,8 @@
 package com.skilldistillery.fursurance.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,16 +14,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class VaccineTest {
-
-	private static EntityManagerFactory emf;
-	private static EntityManager em;
-	private Vaccine vaccination;
-	private Vaccine vaccine;
+class VetTest {
 	
+	private static EntityManagerFactory emf;
+	private EntityManager em;
+	private Vet vet;
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		emf= Persistence.createEntityManagerFactory("JPAFursurance");
+		 emf = Persistence.createEntityManagerFactory("JPAFursurance");
 	}
 
 	@AfterAll
@@ -32,20 +33,19 @@ class VaccineTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em= emf.createEntityManager();
-		vaccination = em.find(Vaccine.class, 1);
-		vaccine = em.find(Vaccine.class, 1);
+		vet = em.find(Vet.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		vaccine = null;
+		vet = null;
 	}
 
 	@Test
-	void test_vaccine_entity_mapping() {
-		assertNotNull(vaccine);
-		assertEquals("bordetella", vaccine.getName());
+	void test_initial_vet_entity_mapping() {
+		assertNotNull(vet);
+		assertEquals("harry",vet.getName());
 	}
 
 }
