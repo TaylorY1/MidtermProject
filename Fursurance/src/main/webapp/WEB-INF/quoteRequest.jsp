@@ -5,9 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Get Quote</title>
+
+<jsp:include page="/WEB-INF/nav.jsp" />
+
 </head>
 <body>
+
 
 </body>
 </html>
