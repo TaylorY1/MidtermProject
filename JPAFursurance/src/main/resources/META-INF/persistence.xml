@@ -7,7 +7,11 @@
     
     <!-- Begin Entities Here -->
     <class>com.skilldistillery.fursurance.entities.User</class>
+
     <class>com.skilldistillery.fursurance.entities.Address</class>
+
+    <class>com.skilldistillery.fursurance.entities.Quote</class>
+
     
     
     
