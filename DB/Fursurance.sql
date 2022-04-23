@@ -450,3 +450,13 @@ INSERT INTO `medical_condition` (`id`, `name`, `description`, `risk_factor`) VAL
 
 COMMIT;
 
+
+-- -----------------------------------------------------
+-- Data for table `pet_has_medical_condition`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fursurancedb`;
+INSERT INTO `pet_has_medical_condition` (`pet_id`, `medical_condition_id`) VALUES (1, 1);
+
+COMMIT;
+

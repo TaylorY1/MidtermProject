@@ -47,6 +47,8 @@ public class Quote {
 	@JoinColumn(name = "pet_id")
 	private Pet pet;
 	
+
+	
 	//methods
 	public Quote() {
 		super();

@@ -13,6 +13,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class PetVaccinationTest {
@@ -43,12 +44,29 @@ class PetVaccinationTest {
 		petVaccination = null;
 	}
 
-//	@Test
-//	void test_PetVaccine_entity_mappings() {
-//		LocalDate date = LocalDate.parse("2016-08-12");
-//		assertNotNull(petVaccination);
-//		assertEquals(1, petVaccination.getVaccinationId());
-//		assertEquals(date, petVaccination.getVaxDate());
-//	}
+	@Test
+	void test_PetVaccine_entity_mappings() {
+		LocalDate date = LocalDate.parse("2016-08-12");
+		assertNotNull(petVaccination);
+		assertEquals(1, petVaccination.getVaccine().getId());
+		assertEquals(date, petVaccination.getVaxDate());
+	}
+	@Test
+	@DisplayName("Many to one Vaccine to pet_vaccination")
+	void test2() {
+		
+		assertNotNull(petVaccination.getVaccine());
+		assertEquals("bordetella", petVaccination.getVaccine().getName());
+		assertEquals("desc", petVaccination.getVaccine().getDescription());
+	}
+	@Test
+	@DisplayName("Many to one Pet to pet_vaccination")
+	void test3() {
+		
+		assertNotNull(petVaccination.getPet());
+		assertEquals("sparky", petVaccination.getPet().getName());
+		assertEquals("male", petVaccination.getPet().getGender());
+	}
 
+	
 }
