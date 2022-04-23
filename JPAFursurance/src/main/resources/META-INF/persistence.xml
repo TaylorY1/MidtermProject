@@ -7,9 +7,19 @@
     
     <!-- Begin Entities Here -->
     <class>com.skilldistillery.fursurance.entities.User</class>
+<<<<<<< HEAD
     <class>com.skilldistillery.fursurance.entities.MedicalCondition</class>
     <class>com.skilldistillery.fursurance.entities.Species</class>
     <class>com.skilldistillery.fursurance.entities.Breed</class>
+=======
+    <class>com.skilldistillery.fursurance.entities.Quote</class>
+    <class>com.skilldistillery.fursurance.entities.Plan</class>
+    <class>com.skilldistillery.fursurance.entities.Address</class>
+
+    
+
+
+>>>>>>> e06a8616e35dddd0666b39b44f04841991a7e466
     
     
     
