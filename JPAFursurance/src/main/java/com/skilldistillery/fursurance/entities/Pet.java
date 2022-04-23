@@ -11,16 +11,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.xml.ws.soap.MTOM;
 
 
 @Entity
 public class Pet {
 
-	@ManyToOne
-	@JoinColumn(name = "species_id")
-	private Species species;
 	
 
 	@Id
@@ -36,15 +36,68 @@ public class Pet {
 	private LocalDate birthdate;
 
 	@Column(name = "photo_url")
-	private Integer photoUrl;
+	private String photoUrl;
 	
 	@OneToMany(mappedBy = "pet")
 	private List<Quote> quotes;
 
+	@OneToMany(mappedBy ="pet")
+	private List<PetVaccination> vaccinations;
+	
+	@ManyToOne
+	@JoinColumn(name= "user_id")
+	private User user;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "species_id")
+	private Species species;
+	
+	@ManyToOne
+	@JoinColumn(name = "breed_id")
+	private Breed breed;
+	
+	@ManyToMany
+	@JoinTable(name = "pet_has_medical_condition", joinColumns = @JoinColumn(name= "pet_id"),
+	inverseJoinColumns = @JoinColumn(name = "medical_condition_id"))
+	private List<MedicalCondition> conditions;
+	
 	
 	//methods
 	public Pet() {
 		super();
+	}
+
+	public List<MedicalCondition> getConditions() {
+		return conditions;
+	}
+
+	public void setConditions(List<MedicalCondition> conditions) {
+		this.conditions = conditions;
+	}
+
+	public Breed getBreed() {
+		return breed;
+	}
+
+	public void setBreed(Breed breed) {
+		this.breed = breed;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<PetVaccination> getVaccinations() {
+		return vaccinations;
+	}
+
+	public void setVaccinations(List<PetVaccination> vaccinations) {
+		this.vaccinations = vaccinations;
 	}
 
 	public Species getSpecies() {
@@ -105,11 +158,13 @@ public class Pet {
 		this.birthdate = birthdate;
 	}
 
-	public Integer getPhotoUrl() {
+	
+
+	public String getPhotoUrl() {
 		return photoUrl;
 	}
 
-	public void setPhotoUrl(Integer photoUrl) {
+	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
 	}
 
