@@ -14,7 +14,7 @@
 		<class>com.skilldistillery.fursurance.entities.Plan</class>
 		<class>com.skilldistillery.fursurance.entities.Address</class>
 		<class>com.skilldistillery.fursurance.entities.Vet</class>
-		<class>com.skilldistillery.fursurance.entities.Vaccination</class>
+		<class>com.skilldistillery.fursurance.entities.Vaccine</class>
 		<class>com.skilldistillery.fursurance.entities.PetVaccination</class>
 		<class>com.skilldistillery.fursurance.entities.Pet</class>
 		<class>com.skilldistillery.fursurance.entities.Species</class>
