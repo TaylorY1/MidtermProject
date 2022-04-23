@@ -41,7 +41,7 @@ class MedicalConditionTest {
 	}
 
 	@Test
-	void test() {
+	void test_intitial_medicalcondition_mapping() {
 		assertNotNull(mc);
 		assertEquals("worms",mc.getName());
 
