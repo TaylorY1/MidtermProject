@@ -24,7 +24,7 @@ public class User {
 	private String firstName;
 	
 	@Column(name="last_name")
-	private String last_Name;
+	private String lastName;
 	
 	private String username;
 	
@@ -91,12 +91,12 @@ public class User {
 		this.firstName = firstName;
 	}
 
-	public String getLast_Name() {
-		return last_Name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLast_Name(String last_Name) {
-		this.last_Name = last_Name;
+	public void setLastName(String last_Name) {
+		this.lastName = last_Name;
 	}
 
 	public String getUsername() {
@@ -141,7 +141,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", password=" + password + ", firstName=" + firstName + ", last_Name=" + last_Name
+		return "User [id=" + id + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", username=" + username + ", active=" + active + ", role=" + role + ", phone=" + phone
 				+ ", photoURL=" + photoURL + "]";
 	}
