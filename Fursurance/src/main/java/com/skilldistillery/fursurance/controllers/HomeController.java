@@ -42,7 +42,7 @@ public class HomeController {
 		if (user != null) {
 			return "quoteRequest";
 		} else {
-			return "logIn";
+			return "login";
 		}
 	}
 
