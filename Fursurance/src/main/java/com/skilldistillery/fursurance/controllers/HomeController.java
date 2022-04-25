@@ -76,9 +76,6 @@ public class HomeController {
 //		return "showQuotes";
 //	}
 	
-	
-
-
 	@RequestMapping("login.do")
 	public String login(Model model) {
 		return "logIn";

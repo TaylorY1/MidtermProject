@@ -9,6 +9,7 @@
 
 <jsp:include page="/WEB-INF/bootstraphead.jsp" />
 
+
 <meta charset="UTF-8">
 <title>Fursurance</title>
 </head>

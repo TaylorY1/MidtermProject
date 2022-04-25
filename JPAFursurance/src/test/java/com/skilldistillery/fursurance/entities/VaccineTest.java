@@ -16,6 +16,7 @@ class VaccineTest {
 
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
+	private Vaccine vaccination;
 	private Vaccine vaccine;
 	
 	@BeforeAll
@@ -31,6 +32,7 @@ class VaccineTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em= emf.createEntityManager();
+		vaccination = em.find(Vaccine.class, 1);
 		vaccine = em.find(Vaccine.class, 1);
 	}
 
