@@ -16,8 +16,6 @@ import com.skilldistillery.fursurance.data.QuoteDAO;
 import com.skilldistillery.fursurance.data.UserDAO;
 import com.skilldistillery.fursurance.entities.Address;
 
-import com.skilldistillery.fursurance.entities.Pet;
-
 import com.skilldistillery.fursurance.entities.Quote;
 import com.skilldistillery.fursurance.entities.User;
 
@@ -57,6 +55,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "createQuote.do", method = RequestMethod.POST)
+
 	public String createQuote(Quote quote, Model model, HttpSession session) {
 
 		User user = (User) session.getAttribute("user");
@@ -74,9 +73,17 @@ public class HomeController {
 	}
 
 
+	public String createQuote(Quote quote, Model model) {
+		quoteDao.createQuote(quote);
+		model.addAttribute("quote", quote);
+		return "showQuotes";
+	}
+
+
+
 	@RequestMapping("login.do")
 	public String login(Model model) {
-		return "logIn";
+		return "login";
 	}
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
@@ -89,13 +96,24 @@ public class HomeController {
 		return "login";
 	}
 
-	@RequestMapping("registration.do")
 
+	@RequestMapping("register.do")
 	public String register(HttpSession session, User user, Address address) {
+		User managed = userDao.findByFullName(user.getFirstName(), user.getLastName());
+		if (managed != null) {
+			// Give alert that profile already exists 
+			return "login";
+		} else {
+			
+			boolean successful = userDao.addUser(user, address);
+			if(successful) {
+				User persistedUser = userDao.findByFullName(user.getFirstName(), user.getLastName());
+				session.setAttribute("user", persistedUser);
+				return "account";
+			}
+			return "login";
+		}
 
-		System.out.println(user);
-	//	System.out.println(address);
-		return "account";
+
 	}
-
 }
