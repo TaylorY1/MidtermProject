@@ -88,7 +88,7 @@
 					<input type="password" id="password" class="form-control" /> <label
 						class="form-label" for="password">Password</label>
 				</div>
-				<div class="form-outline mb-4">
+				<!-- <div class="form-outline mb-4">
 					<input type="text" id="address" class="form-control" /> <label
 						class="form-label" for="address">Address</label>
 				</div>
@@ -107,7 +107,7 @@
 				<div class="form-outline mb-4">
 					<input type="text" id="country" class="form-control" /> <label
 						class="form-label" for="country">Country</label>
-				</div>
+				</div> -->
 
 
 
