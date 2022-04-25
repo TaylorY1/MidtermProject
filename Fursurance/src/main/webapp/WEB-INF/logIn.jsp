@@ -34,13 +34,13 @@
 
 				<!-- Email input -->
 				<div class="form-outline mb-4">
-					<input type="text" id="username" class="form-control" /> <label
+					<input type="text" name= "username" id="username" class="form-control" /> <label
 						class="form-label" for="username">Email or username</label>
 				</div>
 
 				<!-- Password input -->
 				<div class="form-outline mb-4">
-					<input type="password" id="password" class="form-control" /> <label
+					<input type="password" name="password" id="password" class="form-control" /> <label
 						class="form-label" for="password">Password</label>
 				</div>
 
