@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Get Quote</title>
 
-<jsp:include page="/WEB-INF/nav.jsp" />
+<jsp:include page="/WEB-INF/bootstraphead.jsp" />
 
 </head>
 <body>
