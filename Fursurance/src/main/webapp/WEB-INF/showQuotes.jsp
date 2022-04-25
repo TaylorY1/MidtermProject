@@ -5,11 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
 <jsp:include page="/WEB-INF/bootstraphead.jsp" />
 </head>
 <body>
 <jsp:include page="/WEB-INF/nav.jsp" />
+
 
 <jsp:include page="/WEB-INF/bootstrap-js.jsp" />
 </body>

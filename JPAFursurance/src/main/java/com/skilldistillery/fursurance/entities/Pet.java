@@ -2,6 +2,7 @@ package com.skilldistillery.fursurance.entities;
 
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,6 +16,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -32,6 +35,7 @@ public class Pet {
 
 	private String overview;
 
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate birthdate;
 
 	@Column(name = "photo_url")
@@ -183,5 +187,20 @@ public class Pet {
 		Pet other = (Pet) obj;
 		return Objects.equals(id, other.id);
 	}
+
+	@Override
+	public String toString() {
+		return "Pet [id=" + id + ", name=" + name + ", gender=" + gender + ", overview=" + overview + ", birthdate="
+				+ birthdate + ", photoUrl=" + photoUrl + ", quotes=" + quotes + ", vaccinations=" + vaccinations
+				+ ", user=" + user + ", species=" + species + ", breed=" + breed + ", conditions=" + conditions
+				+ ", getConditions()=" + getConditions() + ", getBreed()=" + getBreed() + ", getUser()=" + getUser()
+				+ ", getVaccinations()=" + getVaccinations() + ", getSpecies()=" + getSpecies() + ", getQuotes()="
+				+ getQuotes() + ", getId()=" + getId() + ", getName()=" + getName() + ", getGender()=" + getGender()
+				+ ", getOverview()=" + getOverview() + ", getBirthdate()=" + getBirthdate() + ", getPhotoUrl()="
+				+ getPhotoUrl() + ", hashCode()=" + hashCode() + ", getClass()=" + getClass() + ", toString()="
+				+ super.toString() + "]";
+	}
+	
+	
 
 }
