@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `address` ;
 
 CREATE TABLE IF NOT EXISTS `address` (
   `id` INT NOT NULL,
-  `address` VARCHAR(45) NULL,
+  `street` VARCHAR(45) NULL,
   `city` VARCHAR(45) NULL,
   `state` CHAR(2) NULL,
   `postal_code` VARCHAR(45) NULL,
@@ -313,7 +313,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `address` (`id`, `address`, `city`, `state`, `postal_code`, `country`) VALUES (1, '11 woof lane', 'London', 'wa', '80111', 'merica');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`, `country`) VALUES (1, '11 woof lane', 'London', 'wa', '80111', 'merica');
 
 COMMIT;
 
