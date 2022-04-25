@@ -1,11 +1,14 @@
 package com.skilldistillery.fursurance.data;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.fursurance.entities.Address;
 import com.skilldistillery.fursurance.entities.User;
 
 @Service
@@ -26,8 +29,30 @@ public class UserDAOImpl implements UserDAO {
 		String query = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password";
 		User user = em.createQuery(query, User.class).setParameter("username", username)
 				.setParameter("password", password).getSingleResult();
-		System.out.println(user);
+		
 		return user;
+	}
+
+	@Override
+	public User findByFullName(String firstName, String lastName) {
+		String query = "SELECT u FROM User u WHERE u.firstName = :firstname and u.lastName = :lastname";
+		List<User> users  = em.createQuery(query, User.class).setParameter("firstname", firstName)
+				.setParameter("lastname", lastName).getResultList();
+		if(users.size() > 0) {
+			return users.get(0);
+		}
+		return null;
+	}
+
+	@Override
+	public boolean addUser(User user, Address address) {
+		// username must be unique
+		user.setAddress(address);
+
+		em.persist(address);
+		em.persist(user);
+
+		return true;
 	}
 
 }

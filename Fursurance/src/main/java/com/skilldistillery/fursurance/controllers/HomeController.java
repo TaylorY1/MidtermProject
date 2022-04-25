@@ -16,9 +16,6 @@ import com.skilldistillery.fursurance.data.QuoteDAO;
 import com.skilldistillery.fursurance.data.UserDAO;
 import com.skilldistillery.fursurance.entities.Address;
 
-
-
-
 import com.skilldistillery.fursurance.entities.Pet;
 
 import com.skilldistillery.fursurance.entities.Quote;
@@ -49,16 +46,16 @@ public class HomeController {
 		List<Quote> quotes = quoteDao.findAll();
 		model.addAttribute("quotes", quotes);
 
-		return "showQuotes"; //session determines which view
+		return "showQuotes"; // session determines which view
 	}
-	
+
 	@RequestMapping(path = "createQuote.do", method = RequestMethod.POST)
 	public String createQuote(Quote quote, Model model) {
 		quoteDao.createQuote(quote);
 		model.addAttribute("quote", quote);
 		return "showQuotes";
 	}
-	
+
 //	@RequestMapping(path = "createQuotes.do", method = RequestMethod.POST) //dealing with gold/silver/bronze
 //	public String createQuotes(List<Quote> quotes, Model model) {
 //		List<Quote> quotesCreated = null;
@@ -75,31 +72,46 @@ public class HomeController {
 //		model.addAttribute("quotes", quotes);
 //		return "showQuotes";
 //	}
-	
-	
-	
-	
-
 
 	@RequestMapping("login.do")
 	public String login(Model model) {
-		return "logIn";
+		return "login";
 	}
-	@RequestMapping(path="login.do", method=RequestMethod.POST)
-	public String checkUser(@RequestParam String username, @RequestParam String password,  HttpSession session) {
+
+	@RequestMapping(path = "login.do", method = RequestMethod.POST)
+	public String checkUser(@RequestParam String username, @RequestParam String password, HttpSession session) {
 		User managed = userDao.findByCredentials(username, password);
 		if (managed != null) {
 			session.setAttribute("user", managed);
 			return "quoteRequest";
 		}
-		return "login";	
+		return "login";
 	}
 
 	@RequestMapping("register.do")
+
 	public String register(HttpSession session, User user, Address address ) {
 		System.out.println(user);
 		System.out.println(address);
 		return "account";
 	}
 
+	public String register(HttpSession session, User user, Address address) {
+		User managed = userDao.findByFullName(user.getFirstName(), user.getLastName());
+		if (managed != null) {
+			// Give alert that profile already exists 
+			return "login";
+		} else {
+			
+			boolean successful = userDao.addUser(user, address);
+			if(successful) {
+				User persistedUser = userDao.findByFullName(user.getFirstName(), user.getLastName());
+				session.setAttribute("user", persistedUser);
+				return "account";
+			}
+			return "login";
+		}
+
+
+	}
 }
