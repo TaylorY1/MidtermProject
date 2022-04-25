@@ -36,7 +36,10 @@ public class QuoteDAOImpl implements QuoteDAO {
 		managed.setDeductible(quote.getDeductible()); 
 		managed.setRiskScore(quote.getRiskScore()); 
 		managed.setCouponCode(quote.getCouponCode()); 
-		managed.setCoverage(quote.getCoverage());  //TODO rest of gets/sets
+		managed.setCoverage(quote.getCoverage());  
+		managed.setPlan(quote.getPlan());  
+		managed.setUser(quote.getUser());  
+		managed.setPet(quote.getPet());  
 		return managed;
 	}
 	
