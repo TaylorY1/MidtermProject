@@ -16,9 +16,6 @@ import com.skilldistillery.fursurance.data.QuoteDAO;
 import com.skilldistillery.fursurance.data.UserDAO;
 import com.skilldistillery.fursurance.entities.Address;
 
-
-
-
 import com.skilldistillery.fursurance.entities.Pet;
 
 import com.skilldistillery.fursurance.entities.Quote;
@@ -40,8 +37,15 @@ public class HomeController {
 	}
 
 	@RequestMapping("getQuote.do")
-	public String getQuote(Model model) {
-		return "quoteRequest";
+	public String getQuote(Model model, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		System.out.println("++++++");
+		System.out.println(user);
+		if (user != null) {
+			return "quoteRequest";
+		} else {
+			return "logIn";
+		}
 	}
 
 	@RequestMapping(path = { "showQuotes.do" })
@@ -49,16 +53,26 @@ public class HomeController {
 		List<Quote> quotes = quoteDao.findAll();
 		model.addAttribute("quotes", quotes);
 
-		return "showQuotes"; //session determines which view
+		return "showQuotes"; // session determines which view
 	}
-	
+
 	@RequestMapping(path = "createQuote.do", method = RequestMethod.POST)
-	public String createQuote(Quote quote, Model model) {
-		quoteDao.createQuote(quote);
-		model.addAttribute("quote", quote);
-		return "showQuotes";
+	public String createQuote(Quote quote, Model model, HttpSession session) {
+
+		User user = (User) session.getAttribute("user");
+
+		if (user != null) {
+			quote.setUser(user);
+			quoteDao.createQuote(quote);
+			model.addAttribute("quote", quote);
+			return "showQuotes";
+
+		} else {
+			return "login";
+		}
+
 	}
-	
+
 //	@RequestMapping(path = "createQuotes.do", method = RequestMethod.POST) //dealing with gold/silver/bronze
 //	public String createQuotes(List<Quote> quotes, Model model) {
 //		List<Quote> quotesCreated = null;
@@ -75,23 +89,24 @@ public class HomeController {
 //		model.addAttribute("quotes", quotes);
 //		return "showQuotes";
 //	}
-	
+
 	@RequestMapping("login.do")
 	public String login(Model model) {
 		return "logIn";
 	}
-	@RequestMapping(path="login.do", method=RequestMethod.POST)
-	public String checkUser(@RequestParam String username, @RequestParam String password,  HttpSession session) {
+
+	@RequestMapping(path = "login.do", method = RequestMethod.POST)
+	public String checkUser(@RequestParam String username, @RequestParam String password, HttpSession session) {
 		User managed = userDao.findByCredentials(username, password);
 		if (managed != null) {
 			session.setAttribute("user", managed);
 			return "quoteRequest";
 		}
-		return "login";	
+		return "login";
 	}
 
 	@RequestMapping("registration.do")
-	public String register(HttpSession session, User user, Address address ) {
+	public String register(HttpSession session, User user, Address address) {
 		System.out.println(user);
 		System.out.println(address);
 		return "account";
