@@ -5,11 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Show Quotes</title>
+
+<title>Insert title here</title>
+<jsp:include page="/WEB-INF/bootstraphead.jsp" />
 </head>
 <body>
-<h1>Testing 123</h1>
-${quote}
+<jsp:include page="/WEB-INF/nav.jsp" />
 
+
+<jsp:include page="/WEB-INF/bootstrap-js.jsp" />
 </body>
 </html>

@@ -6,4 +6,6 @@ public interface UserDAO {
 	
 	User findById(int userId);
 
+	User findByCredentials(String username, String password);
+
 }

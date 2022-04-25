@@ -7,7 +7,7 @@
 <html>
 <head>
 
-<jsp:include page="/WEB-INF/nav.jsp" />
+<jsp:include page="/WEB-INF/bootstraphead.jsp" />
 
 <meta charset="UTF-8">
 <title>Fursurance</title>
@@ -16,6 +16,7 @@
 
 
 <body style="background-color: #cccccc">
+<jsp:include page="/WEB-INF/nav.jsp" />
 <div style="background-color: #cccccc">
 <div class="px-4 pt-5 my-5 text-center border-bottom" style="background-color: #cccccc; margin-top: 0px;">
     <h1 class="display-4 fw-bold">Pet Insurance<br />ForSure!</h1>
@@ -38,6 +39,6 @@
 ${DEBUG}
 
 
-
+<jsp:include page="/WEB-INF/bootstrap-js.jsp" />
 </body>
 </html>

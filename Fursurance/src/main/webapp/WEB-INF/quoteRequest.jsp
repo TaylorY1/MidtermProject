@@ -13,6 +13,7 @@
 
 </head>
 <body>
+<jsp:include page="/WEB-INF/nav.jsp" />
 
 <jsp:useBean id="date" class="java.util.Date"/>
 Today is: <fmt:formatDate value="${date}" type="date" pattern="dd-MMM-yyyy"/>
@@ -121,6 +122,6 @@ Today is: <fmt:formatDate value="${date}" type="date" pattern="dd-MMM-yyyy"/>
 </div>
 
 </div>
-
+<jsp:include page="/WEB-INF/bootstrap-js.jsp" />
 </body>
 </html>
