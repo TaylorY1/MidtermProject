@@ -82,7 +82,6 @@ public class HomeController {
 
 
 
-
 	@RequestMapping("login.do")
 	public String login(Model model) {
 		return "logIn";
