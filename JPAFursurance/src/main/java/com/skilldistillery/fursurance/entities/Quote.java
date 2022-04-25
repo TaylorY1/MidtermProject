@@ -149,7 +149,8 @@ public class Quote {
 	@Override
 	public String toString() {
 		return "Quote [id=" + id + ", deductible=" + deductible + ", riskScore=" + riskScore + ", couponCode="
-				+ couponCode + ", premium=" + premium + ", quoteDate=" + quoteDate + ", coverage=" + coverage + "]";
+				+ couponCode + ", premium=" + premium + ", quoteDate=" + quoteDate + ", coverage=" + coverage
+				+ ", plan=" + plan + ", tier=" + tier + ", user=" + user + ", pet=" + pet + "]";
 	}
 	
 	
