@@ -9,6 +9,7 @@ public interface QuoteDAO {
 	public Quote findById(int quoteId);
 	public List<Quote> findAll();
 	public Quote update(int id, Quote quote);
-	public Quote create(Quote quote);
+	public Quote createQuote(Quote quote);
+	public Quote createQuotes(List<Quote> quotes);
 	
 }

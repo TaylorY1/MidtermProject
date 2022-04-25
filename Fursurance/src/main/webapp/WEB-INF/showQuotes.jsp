@@ -5,9 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Show Quotes</title>
 </head>
 <body>
+<h1>Testing 123</h1>
+${quote}
 
 </body>
 </html>
