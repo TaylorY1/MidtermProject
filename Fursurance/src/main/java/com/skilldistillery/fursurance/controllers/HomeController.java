@@ -16,8 +16,6 @@ import com.skilldistillery.fursurance.data.QuoteDAO;
 import com.skilldistillery.fursurance.data.UserDAO;
 import com.skilldistillery.fursurance.entities.Address;
 
-import com.skilldistillery.fursurance.entities.Pet;
-
 import com.skilldistillery.fursurance.entities.Quote;
 import com.skilldistillery.fursurance.entities.User;
 
@@ -37,8 +35,15 @@ public class HomeController {
 	}
 
 	@RequestMapping("getQuote.do")
-	public String getQuote(Model model) {
-		return "quoteRequest";
+	public String getQuote(Model model, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		System.out.println("++++++");
+		System.out.println(user);
+		if (user != null) {
+			return "quoteRequest";
+		} else {
+			return "login";
+		}
 	}
 
 	@RequestMapping(path = { "showQuotes.do" })
@@ -50,28 +55,31 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "createQuote.do", method = RequestMethod.POST)
+
+	public String createQuote(Quote quote, Model model, HttpSession session) {
+
+		User user = (User) session.getAttribute("user");
+
+		if (user != null) {
+			quote.setUser(user);
+			quoteDao.createQuote(quote);
+			model.addAttribute("quote", quote);
+			return "showQuotes";
+
+		} else {
+			return "login";
+		}
+
+	}
+
+
 	public String createQuote(Quote quote, Model model) {
 		quoteDao.createQuote(quote);
 		model.addAttribute("quote", quote);
 		return "showQuotes";
 	}
 
-//	@RequestMapping(path = "createQuotes.do", method = RequestMethod.POST) //dealing with gold/silver/bronze
-//	public String createQuotes(List<Quote> quotes, Model model) {
-//		List<Quote> quotesCreated = null;
-//		Quote quote = null;
-//		
-//		Quote bronze = quoteDao.create(quote);
-//		Quote silver = quoteDao.create(quote);
-//		Quote gold = quoteDao.create(quote);
-//		
-//		quotes.add(bronze);
-//		quotes.add(silver);
-//		quotes.add(gold);
-//		
-//		model.addAttribute("quotes", quotes);
-//		return "showQuotes";
-//	}
+
 
 	@RequestMapping("login.do")
 	public String login(Model model) {
@@ -87,6 +95,7 @@ public class HomeController {
 		}
 		return "login";
 	}
+
 
 	@RequestMapping("register.do")
 	public String register(HttpSession session, User user, Address address) {
@@ -104,6 +113,7 @@ public class HomeController {
 			}
 			return "login";
 		}
+
 
 	}
 }
