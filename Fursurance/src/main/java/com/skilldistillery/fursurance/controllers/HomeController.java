@@ -73,22 +73,6 @@ public class HomeController {
 
 	}
 
-//	@RequestMapping(path = "createQuotes.do", method = RequestMethod.POST) //dealing with gold/silver/bronze
-//	public String createQuotes(List<Quote> quotes, Model model) {
-//		List<Quote> quotesCreated = null;
-//		Quote quote = null;
-//		
-//		Quote bronze = quoteDao.create(quote);
-//		Quote silver = quoteDao.create(quote);
-//		Quote gold = quoteDao.create(quote);
-//		
-//		quotes.add(bronze);
-//		quotes.add(silver);
-//		quotes.add(gold);
-//		
-//		model.addAttribute("quotes", quotes);
-//		return "showQuotes";
-//	}
 
 	@RequestMapping("login.do")
 	public String login(Model model) {

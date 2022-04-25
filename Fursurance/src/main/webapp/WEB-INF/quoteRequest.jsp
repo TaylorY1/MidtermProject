@@ -33,22 +33,42 @@ You are logged in as: ${user.username}
         </div>
         
         
+        
+        <label for="date" class="col-1 col-form-label">Date</label>
+    <div class="col-5">
+      <div class="input-group date" id="datepicker">
+        <input type="date" name="pet.birthdate" class="form-control" id="date"/>
+        <span class="input-group-append">
+          <span class="input-group-text bg-light d-block">
+            <i class="fa fa-calendar"></i>
+          </span>
+        </span>
+      </div>
+    </div>
+        
+        
+        
+        
+        
 		
-		<div class="form-floating mb-3">
+<!-- 		<div class="form-floating mb-3">
           	<input type="date" name="pet.birthdate" />
             <label for="birthday">Birthday</label>
-        </div>
-<!--         <div class="mb-3">
+        </div> -->
+        
+        <br />
+         <div class="mb-3">
             <label class="form-label d-block">Pet&#x27;s Gender</label>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="male" type="radio" name="petsGender" data-sb-validations="" />
+            
+                <input class="form-check-input" value="male" type="radio" name="pet.gender"  />
                 <label class="form-check-label" for="male">Male</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="female" type="radio" name="petsGender" data-sb-validations="" />
+                <input class="form-check-input" value="female" type="radio" name="pet.gender"  />
                 <label class="form-check-label" for="female">Female</label>
             </div>
-        </div> -->
+        </div> 
         <div class="form-floating mb-3">
             <select class="form-select" name="pet.breed.id" id="breed" aria-label="Pet&#x27;s Breed">
                 <option value="1">Chihuahua</option>
@@ -56,65 +76,58 @@ You are logged in as: ${user.username}
             </select>
             <label for="breed">Pet&#x27;s Breed</label>
         </div>
-<!--         <div class="form-floating mb-3">
-            <select class="form-select" id="petSize" aria-label="Pet Size">
-                <option value="1-15 lbs (Small)">1-15 lbs (Small)</option>
-                <option value="16-75 lbs (Medium)">16-75 lbs (Medium)</option>
-                <option value="76+ lbs (Large)">76+ lbs (Large)</option>
-            </select>
-            <label for="petSize">Pet Size</label>
-        </div> -->
-        <!-- <div class="mb-3">
+
+        <div class="mb-3">
             <label class="form-label d-block">Conditions</label>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="optionA" type="checkbox" name="conditions" data-sb-validations="" />
-                <label class="form-check-label" for="optionA">option A</label>
+                <input class="form-check-input" value="1" type="checkbox" name="pet.conditions.id" />
+                <label class="form-check-label" for="worms">Worms</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="optionB" type="checkbox" name="conditions" data-sb-validations="" />
+                <input class="form-check-input" id="optionB" type="checkbox" name="conditions" />
                 <label class="form-check-label" for="optionB">option B</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="optionC" type="checkbox" name="conditions" data-sb-validations="" />
+                <input class="form-check-input" id="optionC" type="checkbox" name="conditions" />
                 <label class="form-check-label" for="optionC">option C</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="optionD" type="checkbox" name="conditions" data-sb-validations="" />
+                <input class="form-check-input" id="optionD" type="checkbox" name="conditions" />
                 <label class="form-check-label" for="optionD">option D</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="optionE" type="checkbox" name="conditions" data-sb-validations="" />
+                <input class="form-check-input" id="optionE" type="checkbox" name="conditions" />
                 <label class="form-check-label" for="optionE">option E</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="optionF" type="checkbox" name="conditions" data-sb-validations="" />
+                <input class="form-check-input" id="optionF" type="checkbox" name="conditions" />
                 <label class="form-check-label" for="optionF">option F</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="optionG" type="checkbox" name="conditions" data-sb-validations="" />
+                <input class="form-check-input" id="optionG" type="checkbox" name="conditions" />
                 <label class="form-check-label" for="optionG">option G</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="optionH" type="checkbox" name="conditions" data-sb-validations="" />
+                <input class="form-check-input" id="optionH" type="checkbox" name="conditions" />
                 <label class="form-check-label" for="optionH">option H</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="optionI" type="checkbox" name="conditions" data-sb-validations="" />
+                <input class="form-check-input" id="optionI" type="checkbox" name="conditions" />
                 <label class="form-check-label" for="optionI">option I</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="optionJ" type="checkbox" name="conditions" data-sb-validations="" />
+                <input class="form-check-input" id="optionJ" type="checkbox" name="conditions" />
                 <label class="form-check-label" for="optionJ">option J</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="optionK" type="checkbox" name="conditions" data-sb-validations="" />
+                <input class="form-check-input" id="optionK" type="checkbox" name="conditions" />
                 <label class="form-check-label" for="optionK">option K</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="optionL" type="checkbox" name="conditions" data-sb-validations="" />
+                <input class="form-check-input" id="optionL" type="checkbox" name="conditions" />
                 <label class="form-check-label" for="optionL">option L</label>
             </div> 
-        </div> -->
+        </div> 
         
         <div class="d-grid">
             <button class="btn btn-primary btn-lg " id="submitButton" type="submit" value= "createQuote">Submit</button>

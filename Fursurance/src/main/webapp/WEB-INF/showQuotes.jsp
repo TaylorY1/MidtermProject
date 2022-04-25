@@ -11,7 +11,9 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/nav.jsp" />
+<h1>Yay, there are quotes!</h1>
 
+${quote}
 
 <jsp:include page="/WEB-INF/bootstrap-js.jsp" />
 </body>

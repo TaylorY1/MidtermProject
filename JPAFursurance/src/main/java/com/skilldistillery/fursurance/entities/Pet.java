@@ -2,7 +2,6 @@ package com.skilldistillery.fursurance.entities;
 
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 
@@ -192,13 +191,7 @@ public class Pet {
 	public String toString() {
 		return "Pet [id=" + id + ", name=" + name + ", gender=" + gender + ", overview=" + overview + ", birthdate="
 				+ birthdate + ", photoUrl=" + photoUrl + ", quotes=" + quotes + ", vaccinations=" + vaccinations
-				+ ", user=" + user + ", species=" + species + ", breed=" + breed + ", conditions=" + conditions
-				+ ", getConditions()=" + getConditions() + ", getBreed()=" + getBreed() + ", getUser()=" + getUser()
-				+ ", getVaccinations()=" + getVaccinations() + ", getSpecies()=" + getSpecies() + ", getQuotes()="
-				+ getQuotes() + ", getId()=" + getId() + ", getName()=" + getName() + ", getGender()=" + getGender()
-				+ ", getOverview()=" + getOverview() + ", getBirthdate()=" + getBirthdate() + ", getPhotoUrl()="
-				+ getPhotoUrl() + ", hashCode()=" + hashCode() + ", getClass()=" + getClass() + ", toString()="
-				+ super.toString() + "]";
+				+ ", user=" + user + ", species=" + species + ", breed=" + breed + ", conditions=" + conditions + "]";
 	}
 	
 	
