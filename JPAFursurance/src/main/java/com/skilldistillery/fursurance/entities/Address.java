@@ -37,12 +37,6 @@ public class Address {
 	}
 
 
-	public String getAddress() {
-		return street;
-	}
-
-	public void setAddress(String address) {
-
 	public String getStreet() {
 		return street;
 	}

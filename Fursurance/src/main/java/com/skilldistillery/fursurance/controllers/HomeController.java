@@ -89,13 +89,6 @@ public class HomeController {
 	}
 
 	@RequestMapping("register.do")
-
-	public String register(HttpSession session, User user, Address address ) {
-		System.out.println(user);
-		System.out.println(address);
-		return "account";
-	}
-
 	public String register(HttpSession session, User user, Address address) {
 		User managed = userDao.findByFullName(user.getFirstName(), user.getLastName());
 		if (managed != null) {

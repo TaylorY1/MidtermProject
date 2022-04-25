@@ -79,31 +79,12 @@
 
 				<!-- Email input -->
 				<div class="form-outline mb-4">
-<<<<<<< HEAD:Fursurance/src/main/webapp/WEB-INF/logIn.jsp
-					<input type="email" name = "email" id="email" class="form-control" /> <label
-=======
 					<input type="email" name="email" id="email" class="form-control" /> <label
->>>>>>> b9af675d09a2ebbc7662d25127b9de0bbb64102c:Fursurance/src/main/webapp/WEB-INF/login.jsp
 						class="form-label" for="email">Email</label>
 				</div>
 
 				<!-- Password input -->
 				<div class="form-outline mb-4">
-<<<<<<< HEAD:Fursurance/src/main/webapp/WEB-INF/logIn.jsp
-					<input type="password"  name="password" id="password" class="form-control" /> <label
-						class="form-label" for="password">Password</label>
-				</div>
-				<div class="form-outline mb-4">
-					<input type="text" name="street"  id="street" class="form-control" /> <label
-						class="form-label" for="street">street</label>
-				</div>
-				<div class="form-outline mb-4">
-					<input type="text" name="city" id="city" class="form-control" /> <label
-						class="form-label" for="city">City</label>
-				</div>
-				<div class="form-outline mb-4">
-					<input type="text" name="state" id="state" class="form-control" /> <label
-=======
 					<input type="password" name= "password" id="password" class="form-control" /> <label
 						class="form-label" for="password">Password</label>
 				</div>
@@ -117,7 +98,6 @@
 				</div>
 				<div class="form-outline mb-4">
 					<input type="text" name= "state" id="state" class="form-control" /> <label
->>>>>>> b9af675d09a2ebbc7662d25127b9de0bbb64102c:Fursurance/src/main/webapp/WEB-INF/login.jsp
 						class="form-label" for="state">State</label>
 				</div>
 				<div class="form-outline mb-4">
