@@ -30,8 +30,7 @@
 			<form action="login.do" method="post">
 
 
-				<p class="text-center">or:</p>
-
+				
 				<!-- Email input -->
 				<div class="form-outline mb-4">
 					<input type="text" name= "username" id="username" class="form-control" /> <label

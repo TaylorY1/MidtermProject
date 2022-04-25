@@ -11,6 +11,7 @@
 
 </head>
 <body>
+<jsp:include page="/WEB-INF/nav.jsp" />
 
 <div class="container-sm">
 
@@ -127,6 +128,6 @@
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
 </div>
-
+<jsp:include page="/WEB-INF/bootstrap-js.jsp" />
 </body>
 </html>

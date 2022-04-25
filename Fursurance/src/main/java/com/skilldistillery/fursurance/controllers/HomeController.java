@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.fursurance.data.QuoteDAO;
 import com.skilldistillery.fursurance.data.UserDAO;
+import com.skilldistillery.fursurance.entities.Address;
 import com.skilldistillery.fursurance.entities.Quote;
 import com.skilldistillery.fursurance.entities.User;
 
@@ -52,14 +53,16 @@ public class HomeController {
 		User managed = userDao.findByCredentials(username, password);
 		if (managed != null) {
 			session.setAttribute("user", managed);
-			return "account";
+			return "quoteRequest";
 		}
 		return "login";	
 	}
 
-	@RequestMapping("signUp.do")
-	public String signUp(Model model) {
-		return "signUp";
+	@RequestMapping("registration.do")
+	public String register(HttpSession session, User user, Address address ) {
+		System.out.println(user);
+		System.out.println(address);
+		return "account";
 	}
 
 }
