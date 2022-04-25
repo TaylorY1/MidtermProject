@@ -63,49 +63,49 @@
 
 				<!-- Name input -->
 				<div class="form-outline mb-4">
-					<input type="text" id="firstName" class="form-control" /> <label
+					<input type="text" name="firstName" id="firstName" class="form-control" /> <label
 						class="form-label" for="firstName">First Name</label>
 				</div>
 				<div class="form-outline mb-4">
-					<input type="text" id="lastName" class="form-control" /> <label
+					<input type="text" name="lastName" id="lastName" class="form-control" /> <label
 						class="form-label" for="lastName">Last Name</label>
 				</div>
 
 				<!-- Username input -->
 				<div class="form-outline mb-4">
-					<input type="text" id="username" class="form-control" /> <label
+					<input type="text" name="username" id="username" class="form-control" /> <label
 						class="form-label" for="username">Username</label>
 				</div>
 
 				<!-- Email input -->
 				<div class="form-outline mb-4">
-					<input type="email" id="email" class="form-control" /> <label
+					<input type="email" name = "email" id="email" class="form-control" /> <label
 						class="form-label" for="email">Email</label>
 				</div>
 
 				<!-- Password input -->
 				<div class="form-outline mb-4">
-					<input type="password" id="password" class="form-control" /> <label
+					<input type="password"  name="password" id="password" class="form-control" /> <label
 						class="form-label" for="password">Password</label>
 				</div>
 				<div class="form-outline mb-4">
-					<input type="text" id="address" class="form-control" /> <label
-						class="form-label" for="address">Address</label>
+					<input type="text" name="street"  id="street" class="form-control" /> <label
+						class="form-label" for="street">street</label>
 				</div>
 				<div class="form-outline mb-4">
-					<input type="text" id="city" class="form-control" /> <label
+					<input type="text" name="city" id="city" class="form-control" /> <label
 						class="form-label" for="city">City</label>
 				</div>
 				<div class="form-outline mb-4">
-					<input type="text" id="state" class="form-control" /> <label
+					<input type="text" name="state" id="state" class="form-control" /> <label
 						class="form-label" for="state">State</label>
 				</div>
 				<div class="form-outline mb-4">
-					<input type="text" id="postalCode" class="form-control" /> <label
+					<input type="text" name="postalCode" id="postalCode" class="form-control" /> <label
 						class="form-label" for="postalCode">Postal Code</label>
 				</div>
 				<div class="form-outline mb-4">
-					<input type="text" id="country" class="form-control" /> <label
+					<input type="text" name="country" id="country" class="form-control" /> <label
 						class="form-label" for="country">Country</label>
 				</div>
 

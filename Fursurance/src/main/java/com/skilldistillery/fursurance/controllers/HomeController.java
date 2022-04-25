@@ -95,7 +95,7 @@ public class HomeController {
 		return "login";	
 	}
 
-	@RequestMapping("registration.do")
+	@RequestMapping("register.do")
 	public String register(HttpSession session, User user, Address address ) {
 		System.out.println(user);
 		System.out.println(address);

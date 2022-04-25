@@ -13,7 +13,7 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String address;
+	private String street;
 	
 	private String city;
 	
@@ -37,11 +37,11 @@ public class Address {
 	}
 
 	public String getAddress() {
-		return address;
+		return street;
 	}
 
 	public void setAddress(String address) {
-		this.address = address;
+		this.street = address;
 	}
 
 	public String getCity() {
@@ -78,7 +78,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "address [id=" + id + ", address=" + address + ", city=" + city + ", state=" + state + ", postalCode="
+		return "address [id=" + id + ", address=" + street + ", city=" + city + ", state=" + state + ", postalCode="
 				+ postalCode + ", country=" + country + "]";
 	}
 	
