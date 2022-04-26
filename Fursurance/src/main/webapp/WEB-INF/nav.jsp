@@ -208,12 +208,16 @@
     
     
     <ul class="navbar-nav">
+    <c:if test="${empty sessionScope.user}">
       <li class="nav-item">
-        <a class="nav-link" href="login.do">Login</a>
+        <a class="nav-link" href="login.do">Login/Sign-up</a>
       </li>
+    </c:if>
+    <c:if test="${not empty sessionScope.user }">
       <li class="nav-item">
-        <a class="nav-link" href="signUp.do">Sign-up</a>
+        <a class="nav-link" href="logOut.do">Log out</a>
       </li>
+    </c:if>
       
     </ul>
   </div>

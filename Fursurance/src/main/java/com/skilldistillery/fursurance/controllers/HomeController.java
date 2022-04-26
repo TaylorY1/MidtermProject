@@ -113,7 +113,12 @@ public class HomeController {
 			}
 			return "login";
 		}
-
-
+	}
+	
+	@RequestMapping("logOut.do")
+	public String logOut(HttpSession session) {
+		session.invalidate();
+		
+		return "index";
 	}
 }

@@ -10,7 +10,6 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/nav.jsp" />
-<p> Testing login !!!!!!</p>
 
 <jsp:include page="/WEB-INF/bootstrap-js.jsp" />
 </body>
