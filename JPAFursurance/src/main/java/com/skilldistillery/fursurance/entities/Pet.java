@@ -16,7 +16,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -34,7 +33,6 @@ public class Pet {
 
 	private String overview;
 
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate birthdate;
 
 	@Column(name = "photo_url")

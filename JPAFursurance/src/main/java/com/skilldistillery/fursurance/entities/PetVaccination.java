@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -88,6 +87,11 @@ public class PetVaccination {
 			return false;
 		PetVaccination other = (PetVaccination) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	@Override
+	public String toString() {
+		return "PetVaccination [id=" + id + ", vaxDate=" + vaxDate + ", term=" + term + ", vaccine=" + vaccine + "]";
 	}
 
 

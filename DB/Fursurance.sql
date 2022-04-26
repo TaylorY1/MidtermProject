@@ -134,7 +134,7 @@ DROP TABLE IF EXISTS `plan` ;
 CREATE TABLE IF NOT EXISTS `plan` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  `description` VARCHAR(45) NULL,
+  `description` VARCHAR(500) NULL,
   `base_premium` DOUBLE NULL,
   `deductible` DOUBLE NULL,
   `base_coverage` DOUBLE NULL,
@@ -313,7 +313,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`, `country`) VALUES (1, '11 woof lane', 'London', 'wa', '80111', 'merica');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`, `country`) VALUES (1, '11 woof lane', 'Denver', 'CO', '80210', 'USA');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`, `country`) VALUES (2, '0900 Merica Lane', 'Detroit', 'MI', '48127', 'USA');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`, `country`) VALUES (3, '1883 Prospector Way', 'Portland', 'OR', '97035', 'USA');
 
 COMMIT;
 
@@ -323,8 +325,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `user` (`id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`, `address_id`, `phone`, `photo_url`) VALUES (1, 'admin', NULL, NULL, 'admin', 1, NULL, 1, NULL, NULL);
-INSERT INTO `user` (`id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`, `address_id`, `phone`, `photo_url`) VALUES (2, 'test', NULL, NULL, 'tester', 2, NULL, 1, NULL, NULL);
+INSERT INTO `user` (`id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`, `address_id`, `phone`, `photo_url`) VALUES (1, 'admin', NULL, NULL, 'admin', 1, NULL, 1, '7224446767', NULL);
+INSERT INTO `user` (`id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`, `address_id`, `phone`, `photo_url`) VALUES (2, 'test', NULL, NULL, 'tester', 2, NULL, 1, '8999988766', NULL);
+INSERT INTO `user` (`id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`, `address_id`, `phone`, `photo_url`) VALUES (3, 'pass', 'Frank', 'Federschmidt', 'FranktheTank', 2, NULL, 1, '3038675309', NULL);
 
 COMMIT;
 
@@ -377,6 +380,9 @@ START TRANSACTION;
 USE `fursurancedb`;
 INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (1, 'sparky', 'male', NULL, '2018-11-13', 1, 1, 1, NULL);
 INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (2, 'rex', 'male', NULL, '2017-09-08', 2, 1, 1, NULL);
+INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (3, 'LadyBird', 'female', NULL, '2015-11-09', 1, 4, 2, NULL);
+INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (4, 'Spike', 'male', NULL, '2019-09-14', 1, 6, 3, NULL);
+INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (5, 'Princess', 'female', NULL, '2017-07-13', 1, 5, 3, NULL);
 
 COMMIT;
 
@@ -386,7 +392,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (1, 'silver', 'silver plan', 50, 75, 1000);
+INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (1, 'bronze', 'Covers emergency visits', 30, 700, 2000);
+INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (2, 'silver', 'Covers emergency visits, vaccinations', 80, 400, 5000);
+INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (3, 'gold', 'Covers emergency visits, vaccinations, dental, and preventative care ', 120, 0, 9999);
 
 COMMIT;
 
@@ -396,7 +404,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `plan_tier` (`id`, `name`, `coverage_adjustment`, `deductible_adjustment`) VALUES (1, 'bronze', 80.22, NULL);
+INSERT INTO `plan_tier` (`id`, `name`, `coverage_adjustment`, `deductible_adjustment`) VALUES (1, 'bronze', 80.22, 110.75);
+INSERT INTO `plan_tier` (`id`, `name`, `coverage_adjustment`, `deductible_adjustment`) VALUES (2, 'silver', 99.4, 84.99);
+INSERT INTO `plan_tier` (`id`, `name`, `coverage_adjustment`, `deductible_adjustment`) VALUES (3, 'gold', 117.99, 0);
 
 COMMIT;
 
@@ -406,7 +416,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `quote` (`id`, `deductible`, `risk_score`, `coupon_code`, `user_id`, `premium`, `pet_id`, `quote_date`, `coverage`, `plan_id`, `plan_tier_id`) VALUES (1, 200, 50, 'no', 2, 120.67, 1, NULL, NULL, 1, 1);
+INSERT INTO `quote` (`id`, `deductible`, `risk_score`, `coupon_code`, `user_id`, `premium`, `pet_id`, `quote_date`, `coverage`, `plan_id`, `plan_tier_id`) VALUES (1, 200, 50, 'no', 1, 120.67, 1, '2020-02-23 11:23:14', NULL, 1, 1);
+INSERT INTO `quote` (`id`, `deductible`, `risk_score`, `coupon_code`, `user_id`, `premium`, `pet_id`, `quote_date`, `coverage`, `plan_id`, `plan_tier_id`) VALUES (2, 200, 50, 'no', 2, 222.2, 2, '2021-08-27 10:29:18', NULL, 2, 2);
+INSERT INTO `quote` (`id`, `deductible`, `risk_score`, `coupon_code`, `user_id`, `premium`, `pet_id`, `quote_date`, `coverage`, `plan_id`, `plan_tier_id`) VALUES (3, 400, 50, 'no', 3, 443.3, 3, '2021-08-24 10:32:18', NULL, 3, 2);
+INSERT INTO `quote` (`id`, `deductible`, `risk_score`, `coupon_code`, `user_id`, `premium`, `pet_id`, `quote_date`, `coverage`, `plan_id`, `plan_tier_id`) VALUES (4, 99, 75, 'no', 3, 227.7, 4, '2021-08-21 12:45:18', NULL, 2, 2);
 
 COMMIT;
 
@@ -416,7 +429,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `vet` (`id`, `name`, `address_id`) VALUES (1, 'harry', 1);
+INSERT INTO `vet` (`id`, `name`, `address_id`) VALUES (1, 'Izzy InjectaCat', 1);
+INSERT INTO `vet` (`id`, `name`, `address_id`) VALUES (2, 'Sally SavesaDog', 2);
+INSERT INTO `vet` (`id`, `name`, `address_id`) VALUES (3, 'Frank Ferret\'Whisperer', 3);
+INSERT INTO `vet` (`id`, `name`, `address_id`) VALUES (4, 'Terry Tortoise\'Healer', 2);
 
 COMMIT;
 
@@ -426,7 +442,18 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `vaccine` (`id`, `name`, `description`) VALUES (1, 'bordetella', 'desc');
+INSERT INTO `vaccine` (`id`, `name`, `description`) VALUES (1, 'Bordetella', 'Non-core dog vaccine. Not usually a serious condition, although it can be dangerous in young puppies. It is usually seen after activities like boarding or showing.');
+INSERT INTO `vaccine` (`id`, `name`, `description`) VALUES (2, 'Rabies', 'Core dog vaccine. Rabies is 100% fatal to dogs, with no treatment available. Prevention is key.');
+INSERT INTO `vaccine` (`id`, `name`, `description`) VALUES (3, 'Distemper', 'Core dog vaccine. Caused by an airborne virus, distemper is a severe disease that, among other problems, may cause permanent brain damage.');
+INSERT INTO `vaccine` (`id`, `name`, `description`) VALUES (4, 'Parvovirus', 'Core dog vaccine. Canine \"parvo\" is contagious, and can cause severe vomiting and bloody diarrhea. Parvo is usually fatal if untreated.');
+INSERT INTO `vaccine` (`id`, `name`, `description`) VALUES (5, 'Parainfluenza', 'Non-core dog vaccine. Parainfluenza infection (not the same as canine influenza) results in cough, fever. It may be associated with Bordetella infection.');
+INSERT INTO `vaccine` (`id`, `name`, `description`) VALUES (6, 'Leptospirosis', 'Non-core dog vaccine. Vaccination is generally restricted to established risk areas. Exposure to rodents and standing water can lead to a leptospirosis infection.');
+INSERT INTO `vaccine` (`id`, `name`, `description`) VALUES (7, 'Lyme disease', 'Non-core dog vaccine. Generally recommended only for dogs with a high risk for exposure to Lyme disease-carrying ticks.');
+INSERT INTO `vaccine` (`id`, `name`, `description`) VALUES (8, 'Adenovirus, type 2 (CAV-2, kennel cough)', 'Core dog vaccine. Spread via coughs and sneezes.');
+INSERT INTO `vaccine` (`id`, `name`, `description`) VALUES (9, 'Adenovirus,  type 1 (CAV-1, canine hepatitis)', 'Core dog vaccine. Spread via infected saliva, urine and feces; canine hepatitis can lead to severe liver damage, and death.');
+INSERT INTO `vaccine` (`id`, `name`, `description`) VALUES (10, 'Feline Herpesvirus', 'Core cat vaccine. Feline herpesvirus causes feline viral rhinotracheitis (FVR), a very contagious upper respiratory condition.');
+INSERT INTO `vaccine` (`id`, `name`, `description`) VALUES (11, 'Calicivirus', 'Core cat vaccine. A very contagious upper respiratory condition that can cause joint pain, oral ulcerations, fever, and anorexia.');
+INSERT INTO `vaccine` (`id`, `name`, `description`) VALUES (12, 'Feline Leukemia Virus (FeLV)', 'Non-core cat vaccine.\nShould test FeLV negative first. Transmitted via cat-to-cat contact. Can cause cancer, immunosuppressant');
 
 COMMIT;
 
@@ -447,6 +474,11 @@ COMMIT;
 START TRANSACTION;
 USE `fursurancedb`;
 INSERT INTO `medical_condition` (`id`, `name`, `description`, `risk_factor`) VALUES (1, 'worms', 'itchy bum', 50);
+INSERT INTO `medical_condition` (`id`, `name`, `description`, `risk_factor`) VALUES (2, 'Cancer', 'abnormal cell growth', 75);
+INSERT INTO `medical_condition` (`id`, `name`, `description`, `risk_factor`) VALUES (3, 'Parvovirus', 'acute gastrointestinal illness', 50);
+INSERT INTO `medical_condition` (`id`, `name`, `description`, `risk_factor`) VALUES (4, 'Leptospirosis', 'spirochete bacterial infection', 50);
+INSERT INTO `medical_condition` (`id`, `name`, `description`, `risk_factor`) VALUES (5, 'Distemper', 'viral disease', 50);
+INSERT INTO `medical_condition` (`id`, `name`, `description`, `risk_factor`) VALUES (6, 'Heartworm', 'blood-borne parasitic infection', 50);
 
 COMMIT;
 
@@ -457,6 +489,9 @@ COMMIT;
 START TRANSACTION;
 USE `fursurancedb`;
 INSERT INTO `pet_has_medical_condition` (`pet_id`, `medical_condition_id`) VALUES (1, 1);
+INSERT INTO `pet_has_medical_condition` (`pet_id`, `medical_condition_id`) VALUES (2, 2);
+INSERT INTO `pet_has_medical_condition` (`pet_id`, `medical_condition_id`) VALUES (3, 3);
+INSERT INTO `pet_has_medical_condition` (`pet_id`, `medical_condition_id`) VALUES (4, 4);
 
 COMMIT;
 

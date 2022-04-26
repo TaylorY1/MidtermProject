@@ -8,10 +8,13 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.fursurance.entities.Breed;
+import com.skilldistillery.fursurance.entities.MedicalCondition;
+import com.skilldistillery.fursurance.entities.PetVaccination;
 import com.skilldistillery.fursurance.entities.Plan;
 import com.skilldistillery.fursurance.entities.PlanTier;
 import com.skilldistillery.fursurance.entities.Quote;
-import com.skilldistillery.fursurance.entities.User;
+import com.skilldistillery.fursurance.entities.Species;
 
 
 @Service
@@ -35,11 +38,13 @@ public class QuoteDAOImpl implements QuoteDAO {
 	@Override
 	public Quote update(int id, Quote quote) {
 		Quote managed = em.find(Quote.class, id); //refactor with  merge later
+		//i dont think update should be changing the id.
 		managed.setId(quote.getId()); 
 		managed.setDeductible(quote.getDeductible()); 
 		managed.setRiskScore(quote.getRiskScore()); 
 		managed.setCouponCode(quote.getCouponCode()); 
 		managed.setCoverage(quote.getCoverage());  
+		//do we need to be changing the plan, qoute, and user here?
 		managed.setPlan(quote.getPlan());  
 		managed.setUser(quote.getUser());  
 		managed.setPet(quote.getPet()); 
@@ -47,18 +52,22 @@ public class QuoteDAOImpl implements QuoteDAO {
 	}
 	
 	@Override
-	public Quote createQuote(Quote quote) {
-		User tempUser = em.find(User.class, 2);
-		Plan tempPlan = em.find(Plan.class, 1);
-		PlanTier tempPlanTier = em.find(PlanTier.class, 1);
+	public Quote createQuote(Quote quote, List<MedicalCondition> conditions, List<PetVaccination> vaccinations) {
 		
-		quote.setPlan(tempPlan);
-		quote.setUser(tempUser);
-		quote.setTier(tempPlanTier);
-		quote.getPet().setUser(tempUser);
+		quote.getPet().setConditions(conditions);
+		quote.getPet().setVaccinations(vaccinations);
 		
+		quote.getPet().setSpecies(em.find(Species.class, quote.getPet().getSpecies().getId()));
+		quote.getPet().setBreed(em.find(Breed.class, quote.getPet().getBreed().getId()));
+		
+		
+		quote.setPlan(em.find(Plan.class, 1)); //TODO logic for all 3 plans
+		quote.setTier(em.find(PlanTier.class, 1)); //TODO logic for all 3 plan tiers
+		
+		System.out.println("************************************");
+		System.out.println(quote.getPet());
+		System.out.println("************************************");
 		em.persist(quote.getPet());
-		
 		em.persist(quote);
 		
 		return quote;
