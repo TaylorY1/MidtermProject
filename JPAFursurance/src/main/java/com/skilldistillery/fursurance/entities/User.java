@@ -44,6 +44,8 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Quote> quotes;
 	
+	@OneToMany(mappedBy = "user")
+	private List<Pet>pets;
 	
 	
 	//methods

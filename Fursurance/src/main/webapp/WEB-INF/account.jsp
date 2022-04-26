@@ -61,8 +61,10 @@
 											<li>Risk Score: ${quote.riskScore}</li>
 
 										</ul>
-											<a href="update.do?quoteId=${quote.id}"><button type="button" class="btn btn-warning">Update</button></a>
-											<a href="delete.do?quoteId=${quote.id}"><button type="button" class="btn btn-danger">Delete</button></a>
+										<a href="update.do?quoteId=${quote.id}"><button
+												type="button" class="btn btn-warning">Update</button></a> <a
+											href="delete.do?quoteId=${quote.id}"><button
+												type="button" class="btn btn-danger">Delete</button></a>
 									</div>
 								</div>
 							</div>
@@ -72,7 +74,31 @@
 			</div>
 		</div>
 	</c:if>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Quote Id</th>
+				<th scope="col">User</th>
+				<th scope="col">Pet</th>
+				<th scope="col">Tier</th>
+				<th scope="col">Deductible</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${allQuotes}" var="quote">
 
+				<tr>
+					<th scope="row">${quote.id}</th>
+					<td>${quote.user.username}</td>
+					<td>${quote.pet.name }</td>
+					<td>${quote.tier.name }</td>
+					<td>${quote.deductible }</td>
+					<td><a href="update.do?quoteId=${quote.id}"><button type="button" class="btn btn-warning">Update</button></a></td>
+					<td><a href="delete.do?quoteId=${quote.id}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 
 	<jsp:include page="/WEB-INF/bootstrap-js.jsp" />
 </body>
