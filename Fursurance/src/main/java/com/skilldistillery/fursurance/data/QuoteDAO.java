@@ -11,5 +11,6 @@ public interface QuoteDAO {
 	public Quote update(int id, Quote quote);
 	public Quote createQuote(Quote quote);
 	public Quote createQuotes(List<Quote> quotes);
+	public boolean deleteById(Quote q);
 	
 }
