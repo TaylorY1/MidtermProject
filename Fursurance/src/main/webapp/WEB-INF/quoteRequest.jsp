@@ -81,13 +81,22 @@ You are logged in as: ${user.username}
             <label class="form-label d-block">Conditions</label>
             <div class="form-check form-check-inline">
             	<c:forEach items="${conditions}" var="condition">
-            	
                 <input class="form-check-input" value="${condition.id}" type="checkbox" name="conditions" />
                 <label class="form-check-label" for="worms">Worms</label>
                 </c:forEach>
             </div>
-            
         </div> 
+        
+        <div class="mb-3">
+            <label class="form-label d-block">Vaccinations</label>
+            <div class="form-check form-check-inline">
+            	<c:forEach items="${vaccinations}" var="vaccination">
+                <input class="form-check-input" value="${vaccination.id}" type="checkbox" name="vaccinations" />
+                <label class="form-check-label" for="bordetella">Bordetella</label>
+                </c:forEach>
+            </div>
+        </div> 
+        
         
         <div class="d-grid">
             <button class="btn btn-primary btn-lg " id="submitButton" type="submit" value= "createQuote">Submit</button>

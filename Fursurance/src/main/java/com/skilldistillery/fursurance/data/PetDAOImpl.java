@@ -10,7 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.fursurance.entities.MedicalCondition;
 import com.skilldistillery.fursurance.entities.Pet;
-import com.skilldistillery.fursurance.entities.Quote;
+import com.skilldistillery.fursurance.entities.PetVaccination;
+import com.skilldistillery.fursurance.entities.Species;
 
 
 @Service
@@ -48,7 +49,28 @@ public class PetDAOImpl implements PetDAO {
 	public MedicalCondition getCondition(int id) {
 		return em.find(MedicalCondition.class, id);
 	}
+	
+	@Override
+	public Species getSpeciesById(int id) {
+		return em.find(Species.class, id);
+	}
 
 
+	@Override
+	public List<PetVaccination> getVaccinations() {
+		
+		String jpql = "SELECT p FROM PetVaccination p";
+		List<PetVaccination> testList = em.createQuery(jpql, PetVaccination.class).getResultList();
+		System.out.println("******VACCINATIONS**********");
+		System.out.println("******" + testList);
+		System.out.println("****************");
+		return testList;
+	}
+
+
+	@Override
+	public PetVaccination getVaccination(int id) {
+		return em.find(PetVaccination.class, id);
+	}
 
 }
