@@ -30,7 +30,7 @@ public class HomeController {
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home(Model model) {
-		model.addAttribute("DEBUG", userDao.findById(1));
+		//model.addAttribute("DEBUG", userDao.findById(1));
 		return "index";
 	}
 
@@ -53,7 +53,6 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "createQuote.do", method = RequestMethod.POST)
-
 	public String createQuote(Quote quote, Model model, HttpSession session) {
 
 		User user = (User) session.getAttribute("user");
@@ -70,7 +69,7 @@ public class HomeController {
 
 	}
 
-
+//Why is this method here?
 	public String createQuote(Quote quote, Model model) {
 		quoteDao.createQuote(quote);
 		model.addAttribute("quote", quote);
@@ -111,7 +110,41 @@ public class HomeController {
 			}
 			return "login";
 		}
-
-
+	}
+	
+	@RequestMapping("logOut.do")
+	public String logOut(HttpSession session) {
+		session.invalidate();
+		
+		return "index";
+	}
+	
+	@RequestMapping("account.do")
+	public String account(HttpSession session, Model model) {
+		User temp = (User) session.getAttribute("user");
+		if(temp.getUsername().equalsIgnoreCase("admin")) {
+			List<Quote> allQuotes = quoteDao.findAll();
+			List<User> allUsers = userDao.findAll();
+			model.addAttribute("allUsers", allUsers);
+			model.addAttribute("allQuotes", allQuotes);
+			return "account";
+		}else {
+			List<Quote> quotes = userDao.findQuoteByUser(temp);
+			model.addAttribute("quotes", quotes);
+			return "account";
+		}
+	}
+	
+	@RequestMapping("update.do")
+	public String update(HttpSession session) {
+		//TODO: add update logic
+		return "updateQuote";
+	}
+	
+	@RequestMapping("delete.do")
+	public String delete(HttpSession session, @RequestParam int quoteId) {
+		Quote temp = quoteDao.findById(quoteId);
+		boolean succsessful = quoteDao.deleteById(temp);
+		return "account";
 	}
 }

@@ -70,6 +70,13 @@ public class QuoteDAOImpl implements QuoteDAO {
 		return null;
 	}
 
+	@Override
+	public boolean deleteById(Quote q) {
+		//TODO: more to do here
+		em.remove(q);
+		return true;
+	}
+
 
 
 }
