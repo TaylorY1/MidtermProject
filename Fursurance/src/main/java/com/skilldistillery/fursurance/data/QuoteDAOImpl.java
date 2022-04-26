@@ -16,6 +16,7 @@ import com.skilldistillery.fursurance.entities.Plan;
 import com.skilldistillery.fursurance.entities.PlanTier;
 import com.skilldistillery.fursurance.entities.Quote;
 import com.skilldistillery.fursurance.entities.Species;
+import com.skilldistillery.fursurance.entities.Vaccine;
 
 
 @Service
@@ -53,10 +54,10 @@ public class QuoteDAOImpl implements QuoteDAO {
 	}
 	
 	@Override
-	public Quote createQuote(Quote quote, List<MedicalCondition> conditions, List<PetVaccination> vaccinations) {
+	public Quote createQuote(Quote quote, List<MedicalCondition> conditions, List<Vaccine> vaccines) {
 		
 		quote.getPet().setConditions(conditions);
-		quote.getPet().setVaccinations(vaccinations);
+//		quote.getPet().setV(vaccines);
 		
 		quote.getPet().setSpecies(em.find(Species.class, quote.getPet().getSpecies().getId()));
 		quote.getPet().setBreed(em.find(Breed.class, quote.getPet().getBreed().getId()));

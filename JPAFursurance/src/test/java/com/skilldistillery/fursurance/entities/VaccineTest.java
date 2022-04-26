@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class VaccineTest {
@@ -45,7 +46,13 @@ class VaccineTest {
 	@Test
 	void test_vaccine_entity_mapping() {
 		assertNotNull(vaccine);
-		assertEquals("bordetella", vaccine.getName());
+		assertEquals("Bordetella", vaccine.getName());
+	}
+	@Test
+	@DisplayName("Many to many vaccine to pet")
+	void test2() {
+		assertNotNull(vaccine.getPets());
+		assertTrue( vaccine.getPets().size() > 0);
 	}
 
 }

@@ -297,6 +297,30 @@ CREATE TABLE IF NOT EXISTS `pet_has_medical_condition` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `pet_has_vaccine`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `pet_has_vaccine` ;
+
+CREATE TABLE IF NOT EXISTS `pet_has_vaccine` (
+  `vaccine_id` INT NOT NULL,
+  `pet_id` INT NOT NULL,
+  PRIMARY KEY (`vaccine_id`, `pet_id`),
+  INDEX `fk_vaccine_has_pet_pet1_idx` (`pet_id` ASC),
+  INDEX `fk_vaccine_has_pet_vaccine1_idx` (`vaccine_id` ASC),
+  CONSTRAINT `fk_vaccine_has_pet_vaccine1`
+    FOREIGN KEY (`vaccine_id`)
+    REFERENCES `vaccine` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_vaccine_has_pet_pet1`
+    FOREIGN KEY (`pet_id`)
+    REFERENCES `pet` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 SET SQL_MODE = '';
 DROP USER IF EXISTS insuranceuser@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -492,6 +516,16 @@ INSERT INTO `pet_has_medical_condition` (`pet_id`, `medical_condition_id`) VALUE
 INSERT INTO `pet_has_medical_condition` (`pet_id`, `medical_condition_id`) VALUES (2, 2);
 INSERT INTO `pet_has_medical_condition` (`pet_id`, `medical_condition_id`) VALUES (3, 3);
 INSERT INTO `pet_has_medical_condition` (`pet_id`, `medical_condition_id`) VALUES (4, 4);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `pet_has_vaccine`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fursurancedb`;
+INSERT INTO `pet_has_vaccine` (`vaccine_id`, `pet_id`) VALUES (1, 1);
 
 COMMIT;
 

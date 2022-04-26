@@ -1,6 +1,5 @@
 package com.skilldistillery.fursurance.entities;
 
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
@@ -16,12 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
-
 @Entity
 public class Pet {
-
-	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,35 +32,44 @@ public class Pet {
 
 	@Column(name = "photo_url")
 	private String photoUrl;
-	
+
 	@OneToMany(mappedBy = "pet")
 	private List<Quote> quotes;
 
-	@OneToMany(mappedBy ="pet")
+	@OneToMany(mappedBy = "pet")
 	private List<PetVaccination> vaccinations;
-	
+
 	@ManyToOne
-	@JoinColumn(name= "user_id")
+	@JoinColumn(name = "user_id")
 	private User user;
-	
-	
+
 	@ManyToOne
 	@JoinColumn(name = "species_id")
 	private Species species;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "breed_id")
 	private Breed breed;
-	
+
 	@ManyToMany
-	@JoinTable(name = "pet_has_medical_condition", joinColumns = @JoinColumn(name= "pet_id"),
-	inverseJoinColumns = @JoinColumn(name = "medical_condition_id"))
+	@JoinTable(name = "pet_has_medical_condition", joinColumns = @JoinColumn(name = "pet_id"), inverseJoinColumns = @JoinColumn(name = "medical_condition_id"))
 	private List<MedicalCondition> conditions;
-	
-	
-	//methods
+
+	@ManyToMany
+	@JoinTable(name = "pet_has_vaccine", joinColumns = @JoinColumn(name = "vaccine_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
+	private List<Vaccine> vaccines;
+
+	// methods
 	public Pet() {
 		super();
+	}
+
+	public List<Vaccine> getVaccines() {
+		return vaccines;
+	}
+
+	public void setVaccines(List<Vaccine> vaccines) {
+		this.vaccines = vaccines;
 	}
 
 	public List<MedicalCondition> getConditions() {
@@ -112,11 +116,9 @@ public class Pet {
 		return quotes;
 	}
 
-
 	public void setQuotes(List<Quote> quotes) {
 		this.quotes = quotes;
 	}
-
 
 	public Integer getId() {
 		return id;
@@ -158,8 +160,6 @@ public class Pet {
 		this.birthdate = birthdate;
 	}
 
-	
-
 	public String getPhotoUrl() {
 		return photoUrl;
 	}
@@ -191,9 +191,5 @@ public class Pet {
 				+ birthdate + ", photoUrl=" + photoUrl + ", vaccinations=" + vaccinations + ", species=" + species
 				+ ", breed=" + breed + ", conditions=" + conditions + "]";
 	}
-
-	
-	
-	
 
 }
