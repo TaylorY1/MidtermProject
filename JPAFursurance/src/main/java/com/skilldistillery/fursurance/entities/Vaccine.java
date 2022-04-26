@@ -1,11 +1,13 @@
 package com.skilldistillery.fursurance.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Vaccine {
@@ -18,8 +20,22 @@ public class Vaccine {
 
 	private String description;
 
+	 @ManyToMany(mappedBy="vaccines")
+	  private List<Pet> pets;
+	 
+	
+	
+	//methods
 	public Vaccine() {
 		super();
+	}
+
+	public List<Pet> getPets() {
+		return pets;
+	}
+
+	public void setPets(List<Pet> pets) {
+		this.pets = pets;
 	}
 
 	public Integer getId() {
