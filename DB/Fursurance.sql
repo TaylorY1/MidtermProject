@@ -134,7 +134,7 @@ DROP TABLE IF EXISTS `plan` ;
 CREATE TABLE IF NOT EXISTS `plan` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  `description` VARCHAR(45) NULL,
+  `description` VARCHAR(500) NULL,
   `base_premium` DOUBLE NULL,
   `deductible` DOUBLE NULL,
   `base_coverage` DOUBLE NULL,
@@ -386,7 +386,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (1, 'silver', 'silver plan', 50, 75, 1000);
+INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (1, 'bronze', 'Covers emergency visits', 30, 700, 2000);
+INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (2, 'silver', 'Covers emergency visits, vaccinations', 80, 400, 5000);
+INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (3, 'gold', 'Covers emergency visits, vaccinations, dental, and preventative care ', 120, 0, 9999);
 
 COMMIT;
 

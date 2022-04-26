@@ -124,6 +124,7 @@ public class HomeController {
 			quote.setUser(user);
 			quote.getPet().setUser(user);
 			
+			
 			List<MedicalCondition> conditionsForPet = new ArrayList<>();
 			
 			
