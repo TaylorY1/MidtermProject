@@ -17,8 +17,8 @@
 
 			<form action="updatequote.do" method="post">
 
-				<label for="disabledInput">Quote ID:</label> <input type="text"
-					id="disabledInput" name="quoteId" value="${quoteToUpdate.id}"><br>
+				<label for="quoteId">Quote ID:</label> <input type="text"
+					id="quoteId" name="quoteId" value="${quoteToUpdate.id}" readonly><br>
 				<br> <label for="deductible">Deductible:</label> <input
 					type="text" id="deductible" name="deductible"
 					value="${quoteToUpdate.deductible}"><br>
@@ -28,10 +28,20 @@
 				<br> <label for="premium">Premium:</label> <input type="text"
 					id="premium" name="premium" value="${quoteToUpdate.premium }"><br>
 				<br>
-
-				<%--  <label for="coverage">Coverage:</label>
-  <input type="text" id="coverage" name="coverage" value="${quoteToUpdate.coverage }"><br><br>
-   --%>
+				
+				 <label for="coverage">Coverage:</label>
+  				<input type="text" id="coverage" name="coverage" value="${1}"><br><br>
+  				
+				 <label for="coverage">Plan:</label>
+  				<input type="text" id="coverage" name="coverage" value="${quoteToUpdate.plan.id}"><br><br>
+  				
+				 <label for="coverage">Tier:</label>
+  				<input type="text" id="coverage" name="coverage" value="${quoteToUpdate.tier.name}"><br><br>
+				
+				
+				
+				
+  
 
 				<%--  <label for="coverage">Coverage:</label>
   <input type="text" id="coverage" name="coverage" value="${quoteToUpdate.coverage }"><br><br>
