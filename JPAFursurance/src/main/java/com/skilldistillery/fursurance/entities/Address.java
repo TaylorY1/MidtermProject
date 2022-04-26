@@ -36,11 +36,13 @@ public class Address {
 		this.id = id;
 	}
 
+
 	public String getStreet() {
 		return street;
 	}
 
 	public void setStreet(String address) {
+
 		this.street = address;
 	}
 
@@ -78,7 +80,10 @@ public class Address {
 
 	@Override
 	public String toString() {
+
+
 		return "street [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", postalCode="
+
 				+ postalCode + ", country=" + country + "]";
 	}
 	

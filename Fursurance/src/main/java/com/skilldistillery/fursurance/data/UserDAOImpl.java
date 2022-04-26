@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.fursurance.entities.Address;
+import com.skilldistillery.fursurance.entities.Quote;
 import com.skilldistillery.fursurance.entities.User;
 
 @Service
@@ -54,5 +55,22 @@ public class UserDAOImpl implements UserDAO {
 
 		return true;
 	}
+
+	@Override
+	public List<Quote> findQuoteByUser(User temp) {
+		String query = "Select q from Quote q where user_id = :userid";
+		List<Quote> quotes = em.createQuery(query, Quote.class).setParameter("userid", temp.getId()).getResultList();
+		if(quotes.size()>0) {
+			return quotes;
+		}
+		return null;
+	}
+
+	@Override
+	public List<User> findAll() {
+		String jpql = "SELECT u FROM User u";
+		return em.createQuery(jpql, User.class).getResultList();
+	}
+	
 
 }
