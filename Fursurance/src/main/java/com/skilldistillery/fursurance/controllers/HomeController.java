@@ -30,6 +30,7 @@ import com.skilldistillery.fursurance.entities.MedicalCondition;
 import com.skilldistillery.fursurance.entities.PetVaccination;
 import com.skilldistillery.fursurance.entities.Quote;
 import com.skilldistillery.fursurance.entities.User;
+import com.skilldistillery.fursurance.entities.Vaccine;
 
 @Controller
 public class HomeController {
@@ -103,6 +104,9 @@ public class HomeController {
 			List<PetVaccination> vaccinations = petDao.getVaccinations();
 			model.addAttribute("vaccinations", vaccinations);
 			
+			List<Vaccine> vaccines = petDao.getVaccines();
+			model.addAttribute("vaccines", vaccines);
+			
 			return "quoteRequest";
 		} else {
 			return "login";
@@ -118,10 +122,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "createQuote.do", method = RequestMethod.POST)
-	public String createQuote(Quote quote, Model model, int[] conditions, int[] vaccinations, HttpSession session) {
+	public String createQuote(Quote quote, Model model, int[] conditions, int[] vaccines, HttpSession session) {
 		System.out.println(conditions[0]);
 		System.out.println("********************");
-		System.out.println(vaccinations[0]);
+		System.out.println(vaccines[0]);
 		User user = (User) session.getAttribute("user");
 		
 		
@@ -134,12 +138,17 @@ public class HomeController {
 				conditionsForPet.add(petDao.getCondition(i));
 			}
 			
-			List<PetVaccination> vaccinationsForPet = new ArrayList<>();
-			for (int i : vaccinations) {
-				vaccinationsForPet.add(petDao.getVaccination(i));
+//			List<PetVaccination> vaccinationsForPet = new ArrayList<>();
+//			for (int i : vaccinations) {
+//				vaccinationsForPet.add(petDao.getVaccination(i));
+//			}
+			
+			List<Vaccine> vaccinesForPet = new ArrayList<>();
+			for (int i : vaccines) {
+				vaccinesForPet.add(petDao.getVaccine(i));
 			}
 			
-			quoteDao.createQuote(quote, conditionsForPet, vaccinationsForPet);
+			quoteDao.createQuote(quote, conditionsForPet, vaccinesForPet);
 			model.addAttribute("quote", quote);
 			return "showQuotes";
 
