@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.fursurance.entities.MedicalCondition;
 import com.skilldistillery.fursurance.entities.Plan;
 import com.skilldistillery.fursurance.entities.PlanTier;
 import com.skilldistillery.fursurance.entities.Quote;
@@ -47,18 +48,17 @@ public class QuoteDAOImpl implements QuoteDAO {
 	}
 	
 	@Override
-	public Quote createQuote(Quote quote) {
-		User tempUser = em.find(User.class, 2);
-		Plan tempPlan = em.find(Plan.class, 1);
-		PlanTier tempPlanTier = em.find(PlanTier.class, 1);
+	public Quote createQuote(Quote quote, List<MedicalCondition> conditions) {
 		
-		quote.setPlan(tempPlan);
-		quote.setUser(tempUser);
-		quote.setTier(tempPlanTier);
-		quote.getPet().setUser(tempUser);
 		
+		quote.getPet().setConditions(conditions);
+		quote.setPlan(em.find(Plan.class, 1)); //TODO logic for all 3
+		quote.setTier(em.find(PlanTier.class, 1)); //TODO logic for all 3
+		
+		System.out.println("************************************");
+		System.out.println(quote.getPet());
+		System.out.println("************************************");
 		em.persist(quote.getPet());
-		
 		em.persist(quote);
 		
 		return quote;
