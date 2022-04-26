@@ -38,11 +38,13 @@ public class QuoteDAOImpl implements QuoteDAO {
 	@Override
 	public Quote update(int id, Quote quote) {
 		Quote managed = em.find(Quote.class, id); //refactor with  merge later
+		//i dont think update should be changing the id.
 		managed.setId(quote.getId()); 
 		managed.setDeductible(quote.getDeductible()); 
 		managed.setRiskScore(quote.getRiskScore()); 
 		managed.setCouponCode(quote.getCouponCode()); 
 		managed.setCoverage(quote.getCoverage());  
+		//do we need to be changing the plan, qoute, and user here?
 		managed.setPlan(quote.getPlan());  
 		managed.setUser(quote.getUser());  
 		managed.setPet(quote.getPet()); 

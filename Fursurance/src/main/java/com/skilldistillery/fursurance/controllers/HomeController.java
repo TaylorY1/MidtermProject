@@ -160,7 +160,7 @@ public class HomeController {
 		User managed = userDao.findByCredentials(username, password);
 		if (managed != null) {
 			session.setAttribute("user", managed);
-			return "quoteRequest";
+			return "redirect:getQuote.do";
 		}
 		return "login";
 	}
@@ -190,7 +190,7 @@ public class HomeController {
 		return "index";
 	}
 
-	@RequestMapping("account.do")
+	@RequestMapping(path={"account.do","account"})
 	public String account(HttpSession session, Model model) {
 		User temp = (User) session.getAttribute("user");
 		if (temp.getUsername().equalsIgnoreCase("admin")) {
@@ -206,7 +206,7 @@ public class HomeController {
 		}
 	}
 
-	@RequestMapping("update.do")
+	@RequestMapping(path={"update.do"})
 	public String update(HttpSession session, Model model, @RequestParam int quoteId) {
 		Quote temp = quoteDao.findById(quoteId);
 		model.addAttribute("quoteToUpdate", temp);
@@ -215,16 +215,20 @@ public class HomeController {
 	}
 
 	@RequestMapping("delete.do")
-	public String delete(HttpSession session, @RequestParam int quoteId) {
+	public String delete(HttpSession session, @RequestParam int quoteId, Model model) {
 		Quote temp = quoteDao.findById(quoteId);
+
 		boolean successful = quoteDao.deleteById(temp);
-		return "account";
+		return "redirect:account.do";
+
+	
+
 		
 	}
 	@RequestMapping(path = "updatequote.do", method = RequestMethod.POST)
 	public String updateQuote(Quote quote, @RequestParam int quoteId) {
 		Quote updated = quoteDao.update(quoteId, quote);
 		
-		return "account";
+		return "redirect:account.do";
 	}
 }
