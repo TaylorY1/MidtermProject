@@ -37,8 +37,6 @@ public class HomeController {
 	@RequestMapping("getQuote.do")
 	public String getQuote(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		System.out.println("++++++");
-		System.out.println(user);
 		if (user != null) {
 			return "quoteRequest";
 		} else {
