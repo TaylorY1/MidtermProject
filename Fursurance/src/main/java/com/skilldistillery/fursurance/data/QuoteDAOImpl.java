@@ -8,11 +8,13 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.fursurance.entities.Breed;
 import com.skilldistillery.fursurance.entities.MedicalCondition;
+import com.skilldistillery.fursurance.entities.PetVaccination;
 import com.skilldistillery.fursurance.entities.Plan;
 import com.skilldistillery.fursurance.entities.PlanTier;
 import com.skilldistillery.fursurance.entities.Quote;
-import com.skilldistillery.fursurance.entities.User;
+import com.skilldistillery.fursurance.entities.Species;
 
 
 @Service
@@ -50,12 +52,17 @@ public class QuoteDAOImpl implements QuoteDAO {
 	}
 	
 	@Override
-	public Quote createQuote(Quote quote, List<MedicalCondition> conditions) {
-		
+	public Quote createQuote(Quote quote, List<MedicalCondition> conditions, List<PetVaccination> vaccinations) {
 		
 		quote.getPet().setConditions(conditions);
-		quote.setPlan(em.find(Plan.class, 1)); //TODO logic for all 3
-		quote.setTier(em.find(PlanTier.class, 1)); //TODO logic for all 3
+		quote.getPet().setVaccinations(vaccinations);
+		
+		quote.getPet().setSpecies(em.find(Species.class, quote.getPet().getSpecies().getId()));
+		quote.getPet().setBreed(em.find(Breed.class, quote.getPet().getBreed().getId()));
+		
+		
+		quote.setPlan(em.find(Plan.class, 1)); //TODO logic for all 3 plans
+		quote.setTier(em.find(PlanTier.class, 1)); //TODO logic for all 3 plan tiers
 		
 		System.out.println("************************************");
 		System.out.println(quote.getPet());

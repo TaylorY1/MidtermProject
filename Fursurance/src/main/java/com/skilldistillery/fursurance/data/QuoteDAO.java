@@ -3,6 +3,7 @@ package com.skilldistillery.fursurance.data;
 import java.util.List;
 
 import com.skilldistillery.fursurance.entities.MedicalCondition;
+import com.skilldistillery.fursurance.entities.PetVaccination;
 import com.skilldistillery.fursurance.entities.Quote;
 
 public interface QuoteDAO {
@@ -10,8 +11,9 @@ public interface QuoteDAO {
 	public Quote findById(int quoteId);
 	public List<Quote> findAll();
 	public Quote update(int id, Quote quote);
-	public Quote createQuote(Quote quote, List<MedicalCondition> conditions);
+	public Quote createQuote(Quote quote, List<MedicalCondition> conditions, List<PetVaccination> vaccinations);
 	public Quote createQuotes(List<Quote> quotes);
 	public boolean deleteById(Quote q);
+	
 	
 }
