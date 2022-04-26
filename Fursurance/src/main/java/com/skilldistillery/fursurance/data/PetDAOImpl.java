@@ -12,6 +12,7 @@ import com.skilldistillery.fursurance.entities.MedicalCondition;
 import com.skilldistillery.fursurance.entities.Pet;
 import com.skilldistillery.fursurance.entities.PetVaccination;
 import com.skilldistillery.fursurance.entities.Species;
+import com.skilldistillery.fursurance.entities.Vaccine;
 
 
 @Service
@@ -71,6 +72,23 @@ public class PetDAOImpl implements PetDAO {
 	@Override
 	public PetVaccination getVaccination(int id) {
 		return em.find(PetVaccination.class, id);
+	}
+
+
+	@Override
+	public List<Vaccine> getVaccines() {
+		String jpql = "SELECT v FROM Vaccine v";
+		List<Vaccine> testList = em.createQuery(jpql, Vaccine.class).getResultList();
+		System.out.println("******VACCINES**********");
+		System.out.println("******" + testList);
+		System.out.println("****************");
+		return testList;
+	}
+
+
+	@Override
+	public Vaccine getVaccine(int id) {
+		return em.find(Vaccine.class, id);
 	}
 
 }

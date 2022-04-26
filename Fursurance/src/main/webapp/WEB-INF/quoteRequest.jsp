@@ -79,22 +79,23 @@ You are logged in as: ${user.username}
 
         <div class="mb-3">
             <label class="form-label d-block">Conditions</label>
-            <div class="form-check form-check-inline">
             	<c:forEach items="${conditions}" var="condition">
-                <input class="form-check-input" value="${condition.id}" type="checkbox" name="conditions" />
-                <label class="form-check-label" for="worms">Worms</label>
+            	<div class="form-check form-check-inline">
+                	<input class="form-check-input" value="${condition.id}" type="checkbox" name="conditions" />
+                	<label class="form-check-label" for="worms">${condition.name}</label>
+                </div>
                 </c:forEach>
-            </div>
+            
         </div> 
         
         <div class="mb-3">
-            <label class="form-label d-block">Vaccinations</label>
-            <div class="form-check form-check-inline">
-            	<c:forEach items="${vaccinations}" var="vaccination">
-                <input class="form-check-input" value="${vaccination.id}" type="checkbox" name="vaccinations" />
-                <label class="form-check-label" for="bordetella">Bordetella</label>
+            <label class="form-label d-block">Vaccines</label>
+            	<c:forEach items="${vaccines}" var="vaccine">
+            		<div class="form-check form-check-inline">
+		                <input class="form-check-input" value="${vaccine.id}" type="checkbox" name="vaccines" />
+		                <label class="form-check-label" for="${vaccination.id}">${vaccine.name}</label>
+                	</div>
                 </c:forEach>
-            </div>
         </div> 
         
         
