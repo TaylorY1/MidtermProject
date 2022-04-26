@@ -27,6 +27,7 @@ import com.skilldistillery.fursurance.data.QuoteDAO;
 import com.skilldistillery.fursurance.data.UserDAO;
 import com.skilldistillery.fursurance.entities.Address;
 import com.skilldistillery.fursurance.entities.MedicalCondition;
+import com.skilldistillery.fursurance.entities.PetVaccination;
 import com.skilldistillery.fursurance.entities.Quote;
 import com.skilldistillery.fursurance.entities.User;
 
@@ -99,6 +100,8 @@ public class HomeController {
 			List<MedicalCondition> conditions = petDao.getConditions();
 			model.addAttribute("conditions", conditions);
 			
+			List<PetVaccination> vaccinations = petDao.getVaccinations();
+			model.addAttribute("vaccinations", vaccinations);
 			
 			return "quoteRequest";
 		} else {
@@ -115,8 +118,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "createQuote.do", method = RequestMethod.POST)
-	public String createQuote(Quote quote, Model model, int[] conditions, HttpSession session) {
+	public String createQuote(Quote quote, Model model, int[] conditions, int[] vaccinations, HttpSession session) {
 		System.out.println(conditions[0]);
+		System.out.println("********************");
+		System.out.println(vaccinations[0]);
 		User user = (User) session.getAttribute("user");
 		
 		
@@ -124,15 +129,17 @@ public class HomeController {
 			quote.setUser(user);
 			quote.getPet().setUser(user);
 			
-			
 			List<MedicalCondition> conditionsForPet = new ArrayList<>();
-			
-			
 			for (int i : conditions) {
 				conditionsForPet.add(petDao.getCondition(i));
 			}
 			
-			quoteDao.createQuote(quote, conditionsForPet);
+			List<PetVaccination> vaccinationsForPet = new ArrayList<>();
+			for (int i : vaccinations) {
+				vaccinationsForPet.add(petDao.getVaccination(i));
+			}
+			
+			quoteDao.createQuote(quote, conditionsForPet, vaccinationsForPet);
 			model.addAttribute("quote", quote);
 			return "showQuotes";
 
@@ -142,12 +149,6 @@ public class HomeController {
 
 	}
 
-//Why is this method here?
-//	public String createQuote(Quote quote, Model model) {
-//		quoteDao.createQuote(quote);
-//		model.addAttribute("quote", quote);
-//		return "showQuotes";
-//	}
 
 	@RequestMapping("login.do")
 	public String login(Model model) {
@@ -214,7 +215,7 @@ public class HomeController {
 	@RequestMapping("delete.do")
 	public String delete(HttpSession session, @RequestParam int quoteId) {
 		Quote temp = quoteDao.findById(quoteId);
-		boolean succsessful = quoteDao.deleteById(temp);
+		boolean successful = quoteDao.deleteById(temp);
 		return "account";
 	}
 }
