@@ -207,8 +207,10 @@ public class HomeController {
 	}
 
 	@RequestMapping("update.do")
-	public String update(HttpSession session) {
-		// TODO: add update logic
+	public String update(HttpSession session, Model model, @RequestParam int quoteId) {
+		Quote temp = quoteDao.findById(quoteId);
+		model.addAttribute("quoteToUpdate", temp);
+
 		return "updateQuote";
 	}
 
@@ -216,6 +218,13 @@ public class HomeController {
 	public String delete(HttpSession session, @RequestParam int quoteId) {
 		Quote temp = quoteDao.findById(quoteId);
 		boolean successful = quoteDao.deleteById(temp);
+		return "account";
+		
+	}
+	@RequestMapping(path = "updatequote.do", method = RequestMethod.POST)
+	public String updateQuote(Quote quote, @RequestParam int quoteId) {
+		Quote updated = quoteDao.update(quoteId, quote);
+		
 		return "account";
 	}
 }
