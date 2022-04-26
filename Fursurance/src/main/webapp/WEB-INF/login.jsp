@@ -10,6 +10,8 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/nav.jsp" />
+	<div class="container-fluid">
+			<div class="container p-5">
 	<!-- Pills navs -->
 	<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
 		<li class="nav-item" role="presentation"><a
@@ -58,8 +60,6 @@
 			aria-labelledby="tab-register">
 			<form action="register.do" method="post">
 
-
-				<p class="text-center">or:</p>
 
 				<!-- Name input -->
 				<div class="form-outline mb-4">
@@ -118,7 +118,8 @@
 		</div>
 	</div>
 	<!-- Pills content -->
-
+</div>
+</div>
 
 	<jsp:include page="/WEB-INF/bootstrap-js.jsp" />
 </body>
