@@ -6,7 +6,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
 <!--  Show this only on mobile to medium screens  -->
-  <a class="navbar-brand d-lg-none" href="#"><div><img src="">
+  <a class="navbar-brand d-lg-none" href="/"><div><img src="">
   
   
 <?xml version="1.0" encoding="utf-8"?>
@@ -86,15 +86,7 @@
 </g>
 </svg>
 
-
-
-  
-  
-  
-  
-  
-  
-  </img></div></a>
+</div></a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -107,7 +99,6 @@
       <li class="nav-item">
         <a class="nav-link active" href="/">Home <span class="sr-only"></span></a>
       </li>
-     
     </ul>
     
     
@@ -193,17 +184,7 @@
 </g>
 </svg>
 
-
-
-
-
-
-</div>
-    
- 
-    
-    
-    </a>
+</div> </a>
     
     
     
@@ -214,6 +195,9 @@
       </li>
     </c:if>
     <c:if test="${not empty sessionScope.user }">
+      <li class="nav-item">
+        <a class="nav-link" href="account.do">${sessionScope.user.username}</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="logOut.do">Log out</a>
       </li>
