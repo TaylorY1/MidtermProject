@@ -1,21 +1,32 @@
 package com.skilldistillery.fursurance.controllers;
 
+import java.beans.PropertyEditorSupport;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.skilldistillery.fursurance.data.PetDAO;
 import com.skilldistillery.fursurance.data.QuoteDAO;
 import com.skilldistillery.fursurance.data.UserDAO;
 import com.skilldistillery.fursurance.entities.Address;
-
+import com.skilldistillery.fursurance.entities.MedicalCondition;
 import com.skilldistillery.fursurance.entities.Quote;
 import com.skilldistillery.fursurance.entities.User;
 
@@ -27,17 +38,68 @@ public class HomeController {
 
 	@Autowired
 	private QuoteDAO quoteDao;
+	
+	@Autowired
+	private PetDAO petDao;
+
+	@InitBinder
+	public void initBinder(WebDataBinder webDataBinder) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		dateFormat.setLenient(true);
+		webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+		webDataBinder.registerCustomEditor(LocalDate.class, new PropertyEditorSupport() {
+			@Override
+			public void setAsText(String text) throws IllegalArgumentException {
+				setValue(LocalDate.parse(text, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+			}
+
+			@Override
+			public String getAsText() throws IllegalArgumentException {
+				return DateTimeFormatter.ofPattern("yyyy-MM-dd").format((LocalDate) getValue());
+			}
+		});
+		webDataBinder.registerCustomEditor(LocalTime.class, new PropertyEditorSupport() {
+			@Override
+			public void setAsText(String text) throws IllegalArgumentException {
+				setValue(LocalTime.parse(text, DateTimeFormatter.ofPattern("HH:mm")));
+			}
+
+			@Override
+			public String getAsText() throws IllegalArgumentException {
+				return DateTimeFormatter.ofPattern("HH:mm").format((LocalTime) getValue());
+			}
+		});
+		// 2020-11-04T09:44
+		webDataBinder.registerCustomEditor(LocalDateTime.class, new PropertyEditorSupport() {
+			@Override
+			public void setAsText(String text) throws IllegalArgumentException {
+				setValue(LocalDateTime.parse(text, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")));
+			}
+
+			@Override
+			public String getAsText() throws IllegalArgumentException {
+				return DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm").format((LocalDateTime) getValue());
+			}
+		});
+	}
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home(Model model) {
-		//model.addAttribute("DEBUG", userDao.findById(1));
+		// model.addAttribute("DEBUG", userDao.findById(1));
 		return "index";
 	}
 
 	@RequestMapping("getQuote.do")
 	public String getQuote(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("user");
+		
+		
 		if (user != null) {
+			
+			List<MedicalCondition> conditions = petDao.getConditions();
+			model.addAttribute("conditions", conditions);
+			
+			
 			return "quoteRequest";
 		} else {
 			return "login";
@@ -53,13 +115,23 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "createQuote.do", method = RequestMethod.POST)
-	public String createQuote(Quote quote, Model model, HttpSession session) {
-
+	public String createQuote(Quote quote, Model model, int[] conditions, HttpSession session) {
+		System.out.println(conditions[0]);
 		User user = (User) session.getAttribute("user");
-
+		
+		
 		if (user != null) {
 			quote.setUser(user);
-			quoteDao.createQuote(quote);
+			quote.getPet().setUser(user);
+			
+			List<MedicalCondition> conditionsForPet = new ArrayList<>();
+			
+			
+			for (int i : conditions) {
+				conditionsForPet.add(petDao.getCondition(i));
+			}
+			
+			quoteDao.createQuote(quote, conditionsForPet);
 			model.addAttribute("quote", quote);
 			return "showQuotes";
 
@@ -70,13 +142,11 @@ public class HomeController {
 	}
 
 //Why is this method here?
-	public String createQuote(Quote quote, Model model) {
-		quoteDao.createQuote(quote);
-		model.addAttribute("quote", quote);
-		return "showQuotes";
-	}
-
-
+//	public String createQuote(Quote quote, Model model) {
+//		quoteDao.createQuote(quote);
+//		model.addAttribute("quote", quote);
+//		return "showQuotes";
+//	}
 
 	@RequestMapping("login.do")
 	public String login(Model model) {
@@ -93,17 +163,16 @@ public class HomeController {
 		return "login";
 	}
 
-
 	@RequestMapping("register.do")
 	public String register(HttpSession session, User user, Address address) {
 		User managed = userDao.findByFullName(user.getFirstName(), user.getLastName());
 		if (managed != null) {
-			// Give alert that profile already exists 
+			// Give alert that profile already exists
 			return "login";
 		} else {
-			
+
 			boolean successful = userDao.addUser(user, address);
-			if(successful) {
+			if (successful) {
 				User persistedUser = userDao.findByFullName(user.getFirstName(), user.getLastName());
 				session.setAttribute("user", persistedUser);
 				return "account";
@@ -111,36 +180,36 @@ public class HomeController {
 			return "login";
 		}
 	}
-	
+
 	@RequestMapping("logOut.do")
 	public String logOut(HttpSession session) {
 		session.invalidate();
-		
+
 		return "index";
 	}
-	
+
 	@RequestMapping("account.do")
 	public String account(HttpSession session, Model model) {
 		User temp = (User) session.getAttribute("user");
-		if(temp.getUsername().equalsIgnoreCase("admin")) {
+		if (temp.getUsername().equalsIgnoreCase("admin")) {
 			List<Quote> allQuotes = quoteDao.findAll();
 			List<User> allUsers = userDao.findAll();
 			model.addAttribute("allUsers", allUsers);
 			model.addAttribute("allQuotes", allQuotes);
 			return "account";
-		}else {
+		} else {
 			List<Quote> quotes = userDao.findQuoteByUser(temp);
 			model.addAttribute("quotes", quotes);
 			return "account";
 		}
 	}
-	
+
 	@RequestMapping("update.do")
 	public String update(HttpSession session) {
-		//TODO: add update logic
+		// TODO: add update logic
 		return "updateQuote";
 	}
-	
+
 	@RequestMapping("delete.do")
 	public String delete(HttpSession session, @RequestParam int quoteId) {
 		Quote temp = quoteDao.findById(quoteId);

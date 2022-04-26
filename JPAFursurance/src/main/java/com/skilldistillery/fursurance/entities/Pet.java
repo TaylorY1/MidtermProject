@@ -34,7 +34,6 @@ public class Pet {
 
 	private String overview;
 
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate birthdate;
 
 	@Column(name = "photo_url")
