@@ -1,21 +1,6 @@
 @charset "UTF-8";
 
-img{
-
-width:150px;
-
-height:150px;
-
-margin:0 auto;
-
-vertical-align:middle;
+svg {
+	vertical-align: middle;
+	margin-left: 185px;
 }
-
-svg{
-	
-	vertical-align:middle;
-	margin-left:185px;
-}
-
-
-

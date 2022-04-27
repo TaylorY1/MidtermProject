@@ -18,10 +18,10 @@
 		<div class="px-4 pt-5 my-5 text-center border-bottom"
 			style="background-color: #cccccc; margin-top: 0px;">
 			<h1 class="display-4 fw-bold">
-				Pet Insurance<br />ForSure!
+				Pet Insurance<br />FurSure!
 			</h1>
 			<div class="col-lg-6 mx-auto">
-				<p class="lead mb-4">Peepee poo poo 123 . . .</p>
+				<p class="lead mb-4">At Fursurance, you know you are "fur" sure getting the best deal. We pride ourselves on our service. We are here when you needs us, Twenty-fur Seven!</p>
 				<div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
 					<a href="getQuote.do"><button type="button"
 							class="btn btn-primary btn-lg px-4 me-sm-3">Get Quote!</button></a>
