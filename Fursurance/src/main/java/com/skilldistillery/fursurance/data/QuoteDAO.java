@@ -13,8 +13,8 @@ public interface QuoteDAO {
 	public List<Quote> findAll();
 	public Quote update(int id, Quote quote);
 	public Quote createQuote(Quote quote, List<MedicalCondition> conditions, List<PetVaccination> vaccinations);
+	public List<Quote> createQuotes(Quote quote, List<MedicalCondition> conditions, List<PetVaccination> vaccinations);
 //	public Quote createQuote(Quote quote, List<MedicalCondition> conditions, List<Vaccine> vaccines);
-	public Quote createQuotes(List<Quote> quotes);
 	public boolean deleteById(Quote q);
 	
 	
