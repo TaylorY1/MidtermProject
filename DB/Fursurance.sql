@@ -351,7 +351,12 @@ START TRANSACTION;
 USE `fursurancedb`;
 INSERT INTO `user` (`id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`, `address_id`, `phone`, `photo_url`) VALUES (1, 'admin', NULL, NULL, 'admin', 1, NULL, 1, '7224446767', NULL);
 INSERT INTO `user` (`id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`, `address_id`, `phone`, `photo_url`) VALUES (2, 'test', NULL, NULL, 'tester', 2, NULL, 1, '8999988766', NULL);
-INSERT INTO `user` (`id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`, `address_id`, `phone`, `photo_url`) VALUES (3, 'pass', 'Frank', 'Federschmidt', 'FranktheTank', 2, NULL, 1, '3038675309', NULL);
+INSERT INTO `user` (`id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`, `address_id`, `phone`, `photo_url`) VALUES (3, 'test', 'Frank', 'Federschmidt', 'FranktheTank', 2, NULL, 1, '3038675309', NULL);
+INSERT INTO `user` (`id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`, `address_id`, `phone`, `photo_url`) VALUES (4, 'test', 'Carrie', 'Carhardt', 'CarsgoFar', 3, NULL, 1, '3038678909', NULL);
+INSERT INTO `user` (`id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`, `address_id`, `phone`, `photo_url`) VALUES (5, 'test', 'Beatrice', 'Bumbleburger', 'Betty2Strings', 4, NULL, 1, '3039875309', NULL);
+INSERT INTO `user` (`id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`, `address_id`, `phone`, `photo_url`) VALUES (6, 'test', 'Howard', 'Halitosis', 'MasksforLife', 5, NULL, 1, '3038675543', NULL);
+INSERT INTO `user` (`id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`, `address_id`, `phone`, `photo_url`) VALUES (7, 'test', 'Jeremy', 'Jenkins', 'Jenkyboy', 6, NULL, 1, '3025375309', NULL);
+INSERT INTO `user` (`id`, `password`, `first_name`, `last_name`, `username`, `active`, `role`, `address_id`, `phone`, `photo_url`) VALUES (8, 'test', 'Paul', 'Pumpkinhead', 'PumpandDump', 7, NULL, 1, '3035555309', NULL);
 
 COMMIT;
 
@@ -407,6 +412,11 @@ INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`
 INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (3, 'LadyBird', 'female', NULL, '2015-11-09', 1, 4, 2, NULL);
 INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (4, 'Spike', 'male', NULL, '2019-09-14', 1, 6, 3, NULL);
 INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (5, 'Princess', 'female', NULL, '2017-07-13', 1, 5, 3, NULL);
+INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (6, 'Darwin', 'male', NULL, '2017-09-19', 2, 12, 3, NULL);
+INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (7, 'Stella', 'female', NULL, '2020-06-13', 1, 3, 4, NULL);
+INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (8, 'Ragnar', 'male', NULL, '2019-07-18', 1, 6, 2, NULL);
+INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (9, 'Lelo', 'female', NULL, '2015-05-12', 2, 10, 5, NULL);
+INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (10, 'Paris', 'female', NULL, '2017-05-10', 2, 13, 6, NULL);
 
 COMMIT;
 
@@ -488,6 +498,15 @@ COMMIT;
 START TRANSACTION;
 USE `fursurancedb`;
 INSERT INTO `pet_vaccination` (`id`, `vax_date`, `pet_id`, `vaccination_id`, `term`) VALUES (1, '2016-08-12', 1, 1, 1);
+INSERT INTO `pet_vaccination` (`id`, `vax_date`, `pet_id`, `vaccination_id`, `term`) VALUES (2, '2018-09-23', 2, 2, 2);
+INSERT INTO `pet_vaccination` (`id`, `vax_date`, `pet_id`, `vaccination_id`, `term`) VALUES (3, '2021-11-03', 3, 3, 3);
+INSERT INTO `pet_vaccination` (`id`, `vax_date`, `pet_id`, `vaccination_id`, `term`) VALUES (4, '2022-01-27', 4, 4, 4);
+INSERT INTO `pet_vaccination` (`id`, `vax_date`, `pet_id`, `vaccination_id`, `term`) VALUES (5, '2017-03-08', 5, 5, 5);
+INSERT INTO `pet_vaccination` (`id`, `vax_date`, `pet_id`, `vaccination_id`, `term`) VALUES (6, '2020-12-12', 4, 3, 4);
+INSERT INTO `pet_vaccination` (`id`, `vax_date`, `pet_id`, `vaccination_id`, `term`) VALUES (7, '2019-09-20', 7, 4, 3);
+INSERT INTO `pet_vaccination` (`id`, `vax_date`, `pet_id`, `vaccination_id`, `term`) VALUES (8, '2016-11-24', 8, 3, 4);
+INSERT INTO `pet_vaccination` (`id`, `vax_date`, `pet_id`, `vaccination_id`, `term`) VALUES (9, '2020-11-03', 9, 5, 3);
+INSERT INTO `pet_vaccination` (`id`, `vax_date`, `pet_id`, `vaccination_id`, `term`) VALUES (10, '2015-07-08', 10, 4, 5);
 
 COMMIT;
 
@@ -526,6 +545,15 @@ COMMIT;
 START TRANSACTION;
 USE `fursurancedb`;
 INSERT INTO `pet_has_vaccine` (`vaccine_id`, `pet_id`) VALUES (1, 1);
+INSERT INTO `pet_has_vaccine` (`vaccine_id`, `pet_id`) VALUES (2, 2);
+INSERT INTO `pet_has_vaccine` (`vaccine_id`, `pet_id`) VALUES (3, 3);
+INSERT INTO `pet_has_vaccine` (`vaccine_id`, `pet_id`) VALUES (4, 4);
+INSERT INTO `pet_has_vaccine` (`vaccine_id`, `pet_id`) VALUES (5, 5);
+INSERT INTO `pet_has_vaccine` (`vaccine_id`, `pet_id`) VALUES (6, 6);
+INSERT INTO `pet_has_vaccine` (`vaccine_id`, `pet_id`) VALUES (7, 7);
+INSERT INTO `pet_has_vaccine` (`vaccine_id`, `pet_id`) VALUES (8, 8);
+INSERT INTO `pet_has_vaccine` (`vaccine_id`, `pet_id`) VALUES (9, 9);
+INSERT INTO `pet_has_vaccine` (`vaccine_id`, `pet_id`) VALUES (10, 10);
 
 COMMIT;
 
