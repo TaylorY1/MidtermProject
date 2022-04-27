@@ -12,8 +12,13 @@
 <body>
 <jsp:include page="/WEB-INF/nav.jsp" />
 <h1>Please select which quote you would like: </h1>
+<c:forEach items="${quotes }" var="quote"	>
+${quote }
 
-${quote}
+
+
+</c:forEach>
+
 
 <jsp:include page="/WEB-INF/bootstrap-js.jsp" />
 </body>

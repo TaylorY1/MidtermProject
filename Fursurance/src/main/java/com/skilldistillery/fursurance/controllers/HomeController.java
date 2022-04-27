@@ -155,15 +155,17 @@ public class HomeController {
 				PetVaccination pv = new PetVaccination();
 				pv.setVaccine(petDao.getVaccine(i));
 				pet.addVaccination(pv);
-				System.out.println("+++++++++++++++++++++++");
-				System.out.println(pv);
-				System.out.println(pet.getVaccinations());
+//				System.out.println("+++++++++++++++++++++++");
+//				System.out.println(pv);
+//				System.out.println(pet.getVaccinations());
 			}
 			
-			System.out.println(pet.getVaccinations());
+		//	System.out.println(pet.getVaccinations());
 			
-			quoteDao.createQuote(quote, conditionsForPet, vaccinationsForPet);
-			model.addAttribute("quote", quote);
+			Quote quote1 = quoteDao.createQuote(quote, conditionsForPet, vaccinationsForPet);
+			List<Quote> quotes = quoteDao.createQuotes(quote1);
+			System.out.println(quotes);
+			model.addAttribute("quotes", quotes);
 			return "showQuotes";
 
 		} else {
