@@ -1,9 +1,11 @@
 package com.skilldistillery.fursurance.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,7 +38,7 @@ public class Pet {
 	@OneToMany(mappedBy = "pet")
 	private List<Quote> quotes;
 
-	@OneToMany(mappedBy = "pet")
+	@OneToMany(mappedBy = "pet", cascade = CascadeType.PERSIST)
 	private List<PetVaccination> vaccinations;
 
 	@ManyToOne
@@ -55,22 +57,14 @@ public class Pet {
 	@JoinTable(name = "pet_has_medical_condition", joinColumns = @JoinColumn(name = "pet_id"), inverseJoinColumns = @JoinColumn(name = "medical_condition_id"))
 	private List<MedicalCondition> conditions;
 
-	@ManyToMany
-	@JoinTable(name = "pet_has_vaccine", joinColumns = @JoinColumn(name = "vaccine_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
-	private List<Vaccine> vaccines;
+
 
 	// methods
 	public Pet() {
 		super();
 	}
 
-	public List<Vaccine> getVaccines() {
-		return vaccines;
-	}
 
-	public void setVaccines(List<Vaccine> vaccines) {
-		this.vaccines = vaccines;
-	}
 
 	public List<MedicalCondition> getConditions() {
 		return conditions;
@@ -104,6 +98,18 @@ public class Pet {
 		this.vaccinations = vaccinations;
 	}
 
+	public void addVaccination(PetVaccination vaccination) {
+		if (vaccinations == null) {
+			vaccinations = new ArrayList<>();
+		}
+//		if (!vaccinations.contains(vaccination)) {
+			vaccinations.add(vaccination);
+			vaccination.setPet(this);
+//		}
+	}
+	
+	//TODO create removeVaccination
+	
 	public Species getSpecies() {
 		return species;
 	}
@@ -188,8 +194,8 @@ public class Pet {
 	@Override
 	public String toString() {
 		return "Pet [id=" + id + ", name=" + name + ", gender=" + gender + ", overview=" + overview + ", birthdate="
-				+ birthdate + ", photoUrl=" + photoUrl + ", vaccinations=" + vaccinations + ", species=" + species
-				+ ", breed=" + breed + ", conditions=" + conditions + "]";
+				+ birthdate + ", photoUrl=" + photoUrl + ", quotes=" + quotes + ", user=" + user + ", species="
+				+ species + ", breed=" + breed + "]";
 	}
 
 }

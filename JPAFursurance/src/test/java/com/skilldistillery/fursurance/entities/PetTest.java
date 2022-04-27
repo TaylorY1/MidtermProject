@@ -85,11 +85,11 @@ class PetTest {
 		assertNotNull(Pet.getConditions());
 		assertTrue( Pet.getConditions().size() > 0);
 	}
-	@Test
-	@DisplayName("pet to Vaccine  many to many mapping")
-	void test8() {
-		assertNotNull(Pet.getVaccines());
-		assertTrue( Pet.getVaccines().size() > 0);
-	}
+//	@Test
+//	@DisplayName("pet to Vaccine  many to many mapping")
+//	void test8() {
+//		assertNotNull(Pet.getVaccines());
+//		assertTrue( Pet.getVaccines().size() > 0);
+//	}
 		
 }
