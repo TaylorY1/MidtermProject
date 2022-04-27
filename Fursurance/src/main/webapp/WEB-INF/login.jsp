@@ -36,7 +36,7 @@
 				<!-- Email input -->
 				<div class="form-outline mb-4">
 					<input type="text" name= "username" id="username" class="form-control" /> <label
-						class="form-label" for="username">Email or username</label>
+						class="form-label" for="username">Email or Username</label>
 				</div>
 
 				<!-- Password input -->
