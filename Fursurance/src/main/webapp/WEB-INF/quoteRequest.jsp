@@ -32,6 +32,12 @@ You are logged in as: ${user.username}
             <label for="species">Pet Type</label>
         </div>
         
+          <div class="form-floating mb-3">
+            <input class="form-control" id="petsName" name="pet.name" type="text" placeholder="Pet&#x27;s Name" data-sb-validations="required" />
+            <label for="petsName">Pet&#x27;s Name</label>
+            <div class="invalid-feedback" data-sb-feedback="petsName:required">Pet&#x27;s Name is required.</div>
+        </div>
+        
         
         
         <label for="date" class="col-1 col-form-label">Date</label>
