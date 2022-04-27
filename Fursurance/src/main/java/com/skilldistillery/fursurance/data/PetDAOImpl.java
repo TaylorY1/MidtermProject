@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.fursurance.entities.Breed;
 import com.skilldistillery.fursurance.entities.MedicalCondition;
 import com.skilldistillery.fursurance.entities.Pet;
 import com.skilldistillery.fursurance.entities.PetVaccination;
@@ -21,6 +22,8 @@ public class PetDAOImpl implements PetDAO {
 	
 	@PersistenceContext
 	private EntityManager em;
+	
+	
 	
 	@Override
 	public Pet findById(int petId) {
@@ -79,9 +82,6 @@ public class PetDAOImpl implements PetDAO {
 	public List<Vaccine> getVaccines() {
 		String jpql = "SELECT v FROM Vaccine v";
 		List<Vaccine> testList = em.createQuery(jpql, Vaccine.class).getResultList();
-		System.out.println("******VACCINES**********");
-		System.out.println("******" + testList);
-		System.out.println("****************");
 		return testList;
 	}
 
@@ -89,6 +89,14 @@ public class PetDAOImpl implements PetDAO {
 	@Override
 	public Vaccine getVaccine(int id) {
 		return em.find(Vaccine.class, id);
+	}
+
+
+	@Override
+	public List<Breed> getBreeds() {
+		String jpql = "SELECT b FROM Breed b";
+		List<Breed> breedList = em.createQuery(jpql, Breed.class).getResultList();
+		return breedList;
 	}
 
 }

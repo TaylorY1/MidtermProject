@@ -26,6 +26,7 @@ import com.skilldistillery.fursurance.data.PetDAO;
 import com.skilldistillery.fursurance.data.QuoteDAO;
 import com.skilldistillery.fursurance.data.UserDAO;
 import com.skilldistillery.fursurance.entities.Address;
+import com.skilldistillery.fursurance.entities.Breed;
 import com.skilldistillery.fursurance.entities.MedicalCondition;
 import com.skilldistillery.fursurance.entities.Pet;
 import com.skilldistillery.fursurance.entities.PetVaccination;
@@ -108,6 +109,9 @@ public class HomeController {
 			
 			List<Vaccine> vaccines = petDao.getVaccines();
 			model.addAttribute("vaccines", vaccines);
+			
+			List<Breed> breeds = petDao.getBreeds();
+			model.addAttribute("breeds", breeds);
 			
 			return "quoteRequest";
 		} else {

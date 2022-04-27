@@ -2,6 +2,7 @@ package com.skilldistillery.fursurance.data;
 
 import java.util.List;
 
+import com.skilldistillery.fursurance.entities.Breed;
 import com.skilldistillery.fursurance.entities.MedicalCondition;
 import com.skilldistillery.fursurance.entities.Pet;
 import com.skilldistillery.fursurance.entities.PetVaccination;
@@ -23,5 +24,6 @@ public interface PetDAO {
 	public Vaccine getVaccine(int id);
 	
 	public Species getSpeciesById(int id);
+	public List<Breed> getBreeds();
 
 }

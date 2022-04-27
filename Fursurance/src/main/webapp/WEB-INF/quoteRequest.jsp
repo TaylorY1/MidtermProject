@@ -70,10 +70,14 @@ You are logged in as: ${user.username}
             </div>
         </div> 
         <div class="form-floating mb-3">
+        
             <select class="form-select" name="pet.breed.id" id="breed" aria-label="Pet&#x27;s Breed">
-                <option value="1">Chihuahua</option>
-                <option value="2">Golden Retriever</option>
+        	<c:forEach items="${breeds }" var="breed" >
+                <option value="${breed.id }">${breed.name }</option>
+				
+        	</c:forEach>
             </select>
+        
             <label for="breed">Pet&#x27;s Breed</label>
         </div>
 
