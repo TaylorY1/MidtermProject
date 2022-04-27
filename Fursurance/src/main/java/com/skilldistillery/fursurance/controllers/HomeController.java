@@ -127,13 +127,7 @@ public class HomeController {
 
 	@RequestMapping(path = "createQuote.do", method = RequestMethod.POST)
 	public String createQuote(Quote quote, Model model, int[] conditions, int[] vaccinations, int[] vaccines, HttpSession session) {
-//		public String createQuote(Quote quote, Model model, int[] conditions, int[] vaccines, HttpSession session) {
-		System.out.println("******* CONDITIONS   *************");
-		System.out.println(conditions[0]);
-		System.out.println("******* VACCINES   *************");
-		System.out.println(vaccines[0]);
 		User user = (User) session.getAttribute("user");
-		
 		
 		if (user != null) {
 			Pet pet = quote.getPet();
@@ -146,24 +140,62 @@ public class HomeController {
 			}
 			
 			List<PetVaccination> vaccinationsForPet = new ArrayList<>();
-//			for (int i : vaccinations) {
-//				vaccinationsForPet.add(petDao.getVaccination(i));
-//			}
-			
-//			List<Vaccine> vaccinationsForPet = new ArrayList<>();
+
 			for (int i : vaccines) {
 				PetVaccination pv = new PetVaccination();
 				pv.setVaccine(petDao.getVaccine(i));
 				pet.addVaccination(pv);
-				System.out.println("+++++++++++++++++++++++");
-				System.out.println(pv);
-				System.out.println(pet.getVaccinations());
 			}
 			
 			System.out.println(pet.getVaccinations());
 			
 			quoteDao.createQuote(quote, conditionsForPet, vaccinationsForPet);
 			model.addAttribute("quote", quote);
+			return "showQuotes";
+
+		} else {
+			return "login";
+		}
+
+	}
+	
+	
+	
+	
+	@RequestMapping(path = "createQuotes.do", method = RequestMethod.POST)
+	public String createQuotes(Quote quote, Model model, int[] conditions, int[] vaccinations, int[] vaccines, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		
+		if (user != null) {
+			System.out.println("*******  PET **********");
+			Pet pet = quote.getPet();
+			System.out.println(pet);
+			System.out.println("*******  PET **********");
+			
+			System.out.println("******* QUOTE **********");
+			System.out.println(quote);
+			System.out.println("******* QUOTE **********");
+			
+			quote.setUser(user);
+			quote.getPet().setUser(user);
+			
+			List<MedicalCondition> conditionsForPet = new ArrayList<>();
+			for (int i : conditions) {
+				conditionsForPet.add(petDao.getCondition(i));
+			}
+			
+			List<PetVaccination> vaccinationsForPet = new ArrayList<>();
+
+			for (int i : vaccines) {
+				PetVaccination pv = new PetVaccination();
+				pv.setVaccine(petDao.getVaccine(i));
+				pet.addVaccination(pv);
+			}
+			
+			System.out.println(pet.getVaccinations());
+			
+			List<Quote> quotes = quoteDao.createQuotes(quote, conditionsForPet, vaccinationsForPet);
+			model.addAttribute("quotes", quotes);
 			return "showQuotes";
 
 		} else {

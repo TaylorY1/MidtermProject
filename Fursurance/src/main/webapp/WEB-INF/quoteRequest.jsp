@@ -22,7 +22,7 @@ You are logged in as: ${user.username}
 <div class="container-sm">
 
 <div class="container px-5 my-5">
-    <form action="createQuote.do" id="createQuote" method="POST">
+    <form action="createQuotes.do" id="createQuote" method="POST">
         <div class="form-floating mb-3">
             <select class="form-select" name="pet.species.id" id="species" aria-label="Pet Type">
                 <option value="1">Dog</option>
@@ -126,7 +126,7 @@ You are logged in as: ${user.username}
         
         
         <div class="d-grid">
-            <button class="btn btn-primary btn-lg " id="submitButton" type="submit" value= "createQuote">Submit</button>
+            <button class="btn btn-primary btn-lg " id="submitButton" type="submit" value= "createQuotes">Submit</button>
         </div>
     </form>
 </div>

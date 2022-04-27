@@ -26,7 +26,7 @@
 										<button class="btn btn-outline-dark btn-block">Select</button>
 									</div>
 									<ul>
-										<li>Deductible: $${quote.deductible}</li>
+										<li>Deductible: $${quote.plan.deductible}</li>
 										<li>Risk Score: ${quote.riskScore}</li>
 
 									</ul>
