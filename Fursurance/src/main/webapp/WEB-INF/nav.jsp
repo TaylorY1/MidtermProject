@@ -2,11 +2,13 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
+    <link href="css/navbar.css" rel="stylesheet" type="text/css">
+    
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
 <!--  Show this only on mobile to medium screens  -->
-  <a class="navbar-brand d-lg-none" href="/"><div><img src="">
+  <a class="navbar-brand d-lg-none" href="/"><div><img src="" class="center">
   
   
 <?xml version="1.0" encoding="utf-8"?>
@@ -14,6 +16,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35%" height="35%" x="0px" y="0px"
 	 viewBox="0 0 33.35 34.66" style="enable-background:new 0 0 33.35 34.66;" xml:space="preserve">
 <style type="text/css">
+	text-align: center;
 	.st0{fill:#EA656F;}
 	.st1{fill:#FFFFFF;}
 </style>
@@ -97,7 +100,7 @@
 
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" href="/">Home <span class="sr-only"></span></a>
+        <a class="nav-link active" href="/">Home         <span class="sr-only"></span></a>
       </li>
     </ul>
     
@@ -110,7 +113,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 26.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35%" height="35%" x="0px" y="0px"
-	 viewBox="0 0 33.35 34.66" style="enable-background:new 0 0 33.35 34.66;" xml:space="preserve">
+	 viewBox="0 0 33.35 34.66" style="enable-background:new 0 0 33.35 34.66;" xml:space="preserve" >
 <style type="text/css">
 	.st0{fill:#EA656F;}
 	.st1{fill:#FFFFFF;}
