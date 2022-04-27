@@ -141,6 +141,7 @@ public class QuoteDAOImpl implements QuoteDAO {
 		bronzeQuote.setPremium(em.find(Plan.class, 1).getBasePremium() * riskScore);
 		bronzeQuote.setTier(em.find(PlanTier.class, 1)); 
 		bronzeQuote.setPet(quote.getPet());
+		bronzeQuote.setDeductible(bronzeQuote.getPlan().getDeductible() * riskScore);
 		
 		System.out.println("******* bronzeQuote **********");
 		System.out.println(bronzeQuote);
@@ -153,6 +154,7 @@ public class QuoteDAOImpl implements QuoteDAO {
 		silverQuote.setPremium(em.find(Plan.class, 2).getBasePremium() * riskScore);
 		silverQuote.setTier(em.find(PlanTier.class, 2)); 
 		silverQuote.setPet(quote.getPet());
+		silverQuote.setDeductible(silverQuote.getPlan().getDeductible() * riskScore);
 		
 		System.out.println("******* silverQuote **********");
 		System.out.println(silverQuote);
@@ -165,6 +167,7 @@ public class QuoteDAOImpl implements QuoteDAO {
 		goldQuote.setPremium(em.find(Plan.class, 3).getBasePremium() * riskScore);
 		goldQuote.setTier(em.find(PlanTier.class, 3)); 
 		goldQuote.setPet(quote.getPet());
+		goldQuote.setDeductible(goldQuote.getPlan().getDeductible() * riskScore);
 		
 		System.out.println("******* goldQuote **********");
 		System.out.println(goldQuote);
