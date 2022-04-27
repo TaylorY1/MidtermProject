@@ -123,9 +123,10 @@ public class HomeController {
 
 	@RequestMapping(path = "createQuote.do", method = RequestMethod.POST)
 	public String createQuote(Quote quote, Model model, int[] conditions, int[] vaccines, HttpSession session) {
+		System.out.println("******* CONDITIONS   *************");
 		System.out.println(conditions[0]);
-		System.out.println("********************");
-		System.out.println(vaccines[0]);
+		System.out.println("******* VACCINES   *************");
+//		System.out.println(vaccines[0]);
 		User user = (User) session.getAttribute("user");
 		
 		
