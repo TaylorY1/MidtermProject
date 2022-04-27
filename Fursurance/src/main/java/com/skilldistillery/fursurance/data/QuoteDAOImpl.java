@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.fursurance.entities.Breed;
 import com.skilldistillery.fursurance.entities.MedicalCondition;
+import com.skilldistillery.fursurance.entities.PetVaccination;
 import com.skilldistillery.fursurance.entities.Plan;
 import com.skilldistillery.fursurance.entities.PlanTier;
 import com.skilldistillery.fursurance.entities.Quote;
@@ -52,10 +53,11 @@ public class QuoteDAOImpl implements QuoteDAO {
 	}
 	
 	@Override
-	public Quote createQuote(Quote quote, List<MedicalCondition> conditions, List<Vaccine> vaccines) {
+	public Quote createQuote(Quote quote, List<MedicalCondition> conditions, List<PetVaccination> vaccinations) {
 		
 		quote.getPet().setConditions(conditions);
 //		quote.getPet().setVaccines(vaccines); // boom!
+//		quote.getPet().setVaccinations(vaccinations); 
 		
 		quote.getPet().setSpecies(em.find(Species.class, quote.getPet().getSpecies().getId()));
 		quote.getPet().setBreed(em.find(Breed.class, quote.getPet().getBreed().getId()));

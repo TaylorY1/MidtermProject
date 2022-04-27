@@ -48,11 +48,11 @@ class VaccineTest {
 		assertNotNull(vaccine);
 		assertEquals("Bordetella", vaccine.getName());
 	}
-	@Test
-	@DisplayName("Many to many vaccine to pet")
-	void test2() {
-		assertNotNull(vaccine.getPets());
-		assertTrue( vaccine.getPets().size() > 0);
-	}
+//	@Test
+//	@DisplayName("Many to many vaccine to pet")
+//	void test2() {
+//		assertNotNull(vaccine.getPets());
+//		assertTrue( vaccine.getPets().size() > 0);
+//	}
 
 }

@@ -20,8 +20,8 @@ public class Vaccine {
 
 	private String description;
 
-	 @ManyToMany(mappedBy="vaccines")
-	  private List<Pet> pets;
+//	 @ManyToMany(mappedBy="vaccines")
+//	  private List<Pet> pets;
 	 
 	
 	
@@ -30,13 +30,13 @@ public class Vaccine {
 		super();
 	}
 
-	public List<Pet> getPets() {
-		return pets;
-	}
-
-	public void setPets(List<Pet> pets) {
-		this.pets = pets;
-	}
+//	public List<Pet> getPets() {
+//		return pets;
+//	}
+//
+//	public void setPets(List<Pet> pets) {
+//		this.pets = pets;
+//	}
 
 	public Integer getId() {
 		return id;
