@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.fursurance.entities.Breed;
 import com.skilldistillery.fursurance.entities.MedicalCondition;
+import com.skilldistillery.fursurance.entities.Pet;
 import com.skilldistillery.fursurance.entities.PetVaccination;
 import com.skilldistillery.fursurance.entities.Plan;
 import com.skilldistillery.fursurance.entities.PlanTier;
@@ -39,16 +40,15 @@ public class QuoteDAOImpl implements QuoteDAO {
 	@Override
 	public Quote update(int id, Quote quote) {
 		Quote managed = em.find(Quote.class, id); //refactor with  merge later
-		//i dont think update should be changing the id.
-		managed.setId(quote.getId()); 
 		managed.setDeductible(quote.getDeductible()); 
 		managed.setRiskScore(quote.getRiskScore()); 
 		managed.setCouponCode(quote.getCouponCode()); 
-		managed.setCoverage(quote.getCoverage());  
+		//managed.setCoverage(quote.getCoverage());  
+		managed.setCoverage(1);  
 		//do we need to be changing the plan, qoute, and user here?
-		managed.setPlan(quote.getPlan());  
-		managed.setUser(quote.getUser());  
-		managed.setPet(quote.getPet()); 
+		//managed.setPlan(quote.getPlan());  
+		//managed.setUser(quote.getUser());  
+		//managed.setPet(em.find(Pet.class, quote.getPet().getId())); 
 		return managed;
 	}
 	

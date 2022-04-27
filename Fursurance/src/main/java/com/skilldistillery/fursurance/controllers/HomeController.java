@@ -236,6 +236,7 @@ public class HomeController {
 	}
 	@RequestMapping(path = "updatequote.do", method = RequestMethod.POST)
 	public String updateQuote(Quote quote, @RequestParam int quoteId) {
+		
 		Quote updated = quoteDao.update(quoteId, quote);
 		
 		return "redirect:account.do";

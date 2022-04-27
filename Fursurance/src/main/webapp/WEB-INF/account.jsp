@@ -51,6 +51,7 @@
 							<th scope="col">Pet</th>
 							<th scope="col">Tier</th>
 							<th scope="col">Deductible</th>
+							<th scope="col">Premium</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -61,6 +62,7 @@
 								<td>${quote.pet.name }</td>
 								<td>${quote.tier.name }</td>
 								<td>${quote.deductible }</td>
+								<td>${quote.premium}</td>
 								<td><a href="update.do?quoteId=${quote.id}"><button type="button" class="btn btn-warning">Update</button></a></td>
 								<td><a href="delete.do?quoteId=${quote.id}"><button type="button" class="btn btn-danger">Delete</button></a></td>
 							</tr>
