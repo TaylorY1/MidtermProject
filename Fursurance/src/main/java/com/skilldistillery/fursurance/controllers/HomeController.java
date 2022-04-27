@@ -100,6 +100,9 @@ public class HomeController {
 		
 		if (user != null) {
 			
+		
+			
+			
 			
 			List<MedicalCondition> conditions = petDao.getConditions();
 			model.addAttribute("conditions", conditions);
@@ -112,6 +115,8 @@ public class HomeController {
 			
 			List<Breed> breeds = petDao.getBreeds();
 			model.addAttribute("breeds", breeds);
+			
+			
 			
 			return "quoteRequest";
 		} else {
