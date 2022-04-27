@@ -40,7 +40,6 @@ public class QuoteDAOImpl implements QuoteDAO {
 	@Override
 	public Quote update(int id, Quote quote) {
 		Quote managed = em.find(Quote.class, id); //refactor with  merge later
-		//managed.setId(quote.getId()); 
 		managed.setDeductible(quote.getDeductible()); 
 		managed.setRiskScore(quote.getRiskScore()); 
 		managed.setCouponCode(quote.getCouponCode()); 
