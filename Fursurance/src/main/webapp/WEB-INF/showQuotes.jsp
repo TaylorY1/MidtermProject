@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
+<title>Quotes</title>
 <jsp:include page="/WEB-INF/bootstraphead.jsp" />
 </head>
 <body>
 <jsp:include page="/WEB-INF/nav.jsp" />
-<h1>Yay, there are quotes!</h1>
+<h1>Please select which quote you would like: </h1>
 
 ${quote}
 
