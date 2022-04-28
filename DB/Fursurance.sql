@@ -135,9 +135,9 @@ CREATE TABLE IF NOT EXISTS `plan` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `description` VARCHAR(500) NULL,
-  `base_premium` DOUBLE NULL,
-  `deductible` DOUBLE NULL,
-  `base_coverage` DOUBLE NULL,
+  `base_premium` DECIMAL(6,2) NULL,
+  `deductible` DECIMAL(6,2) NULL,
+  `base_coverage` DECIMAL(6,2) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -150,8 +150,8 @@ DROP TABLE IF EXISTS `plan_tier` ;
 CREATE TABLE IF NOT EXISTS `plan_tier` (
   `id` INT NOT NULL,
   `name` VARCHAR(45) NULL,
-  `coverage_adjustment` DOUBLE NULL,
-  `deductible_adjustment` DOUBLE NULL,
+  `coverage_adjustment` DECIMAL(6,2) NULL,
+  `deductible_adjustment` DECIMAL(6,2) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `quote` (
   `risk_score` DOUBLE NULL,
   `coupon_code` VARCHAR(45) NULL,
   `user_id` INT NOT NULL,
-  `premium` DOUBLE NULL,
+  `premium` DECIMAL(8,2) NULL,
   `pet_id` INT NOT NULL,
   `quote_date` DATETIME NULL,
   `coverage` INT NULL,
@@ -378,26 +378,26 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (1, 'chihuahua', 1);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (2, 'golden_retriever', 1);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (3, 'labrador', 1);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (4, 'poodle', 1);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (5, 'husky', 1);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (6, 'aussie', 1);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (7, 'bernese', 1);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (8, 'malamute', 1);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (9, 'mutt', 1);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (10, 'pitbull', 1);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (11, 'siamese', 2);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (12, 'bengal', 2);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (13, 'persian', 2);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (14, 'sphynx', 2);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (15, 'ragdoll', 2);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (16, 'bombay', 2);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (17, 'toyger', 2);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (18, 'kinkalow', 2);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (19, 'ragamuffin', 2);
-INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (20, 'korat', 2);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (1, 'Chihuahua', 1);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (2, 'Golden Retriever', 1);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (3, 'Labrador', 1);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (4, 'Poodle', 1);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (5, 'Husky', 1);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (6, 'Aussie', 1);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (7, 'Bernese', 1);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (8, 'Malamute', 1);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (9, 'Mutt', 1);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (10, 'Pitbull', 1);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (11, 'Siamese', 2);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (12, 'Bengal', 2);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (13, 'Persian', 2);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (14, 'Sphynx', 2);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (15, 'Ragdoll', 2);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (16, 'Bombay', 2);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (17, 'Toyger', 2);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (18, 'Kinkalow', 2);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (19, 'Ragamuffin', 2);
+INSERT INTO `breed` (`id`, `name`, `species_id`) VALUES (20, 'Korat', 2);
 
 COMMIT;
 
@@ -407,8 +407,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (1, 'sparky', 'male', NULL, '2018-11-13', 1, 1, 1, NULL);
-INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (2, 'rex', 'male', NULL, '2017-09-08', 2, 1, 1, NULL);
+INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (1, 'Sparky', 'male', NULL, '2018-11-13', 1, 1, 1, NULL);
+INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (2, 'Rex', 'male', NULL, '2017-09-08', 2, 1, 1, NULL);
 INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (3, 'LadyBird', 'female', NULL, '2015-11-09', 1, 4, 2, NULL);
 INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (4, 'Spike', 'male', NULL, '2019-09-14', 1, 6, 3, NULL);
 INSERT INTO `pet` (`id`, `name`, `gender`, `overview`, `birthdate`, `species_id`, `breed_id`, `user_id`, `photo_url`) VALUES (5, 'Princess', 'female', NULL, '2017-07-13', 1, 5, 3, NULL);
@@ -426,9 +426,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (1, 'bronze', 'Covers emergency visits', 30, 700, 2000);
-INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (2, 'silver', 'Covers emergency visits, vaccinations', 80, 400, 5000);
-INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (3, 'gold', 'Covers emergency visits, vaccinations, dental, and preventative care ', 120, 0, 9999);
+INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (1, 'Bronze', 'Covers emergency visits', 30, 700, 2000);
+INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (2, 'Silver', 'Covers emergency visits, vaccinations', 80, 400, 5000);
+INSERT INTO `plan` (`id`, `name`, `description`, `base_premium`, `deductible`, `base_coverage`) VALUES (3, 'Gold', 'Covers emergency visits, vaccinations, dental, and preventative care ', 120, 0, 9999);
 
 COMMIT;
 
@@ -438,9 +438,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `plan_tier` (`id`, `name`, `coverage_adjustment`, `deductible_adjustment`) VALUES (1, 'bronze', 80.22, 110.75);
-INSERT INTO `plan_tier` (`id`, `name`, `coverage_adjustment`, `deductible_adjustment`) VALUES (2, 'silver', 99.4, 84.99);
-INSERT INTO `plan_tier` (`id`, `name`, `coverage_adjustment`, `deductible_adjustment`) VALUES (3, 'gold', 117.99, 0);
+INSERT INTO `plan_tier` (`id`, `name`, `coverage_adjustment`, `deductible_adjustment`) VALUES (1, 'Bronze', 80.22, 110.75);
+INSERT INTO `plan_tier` (`id`, `name`, `coverage_adjustment`, `deductible_adjustment`) VALUES (2, 'Silver', 99.4, 84.99);
+INSERT INTO `plan_tier` (`id`, `name`, `coverage_adjustment`, `deductible_adjustment`) VALUES (3, 'Gold', 117.99, 0);
 
 COMMIT;
 
@@ -516,7 +516,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fursurancedb`;
-INSERT INTO `medical_condition` (`id`, `name`, `description`, `risk_factor`) VALUES (1, 'worms', 'itchy bum', 50);
+INSERT INTO `medical_condition` (`id`, `name`, `description`, `risk_factor`) VALUES (1, 'Worms', 'itchy bum', 50);
 INSERT INTO `medical_condition` (`id`, `name`, `description`, `risk_factor`) VALUES (2, 'Cancer', 'abnormal cell growth', 75);
 INSERT INTO `medical_condition` (`id`, `name`, `description`, `risk_factor`) VALUES (3, 'Parvovirus', 'acute gastrointestinal illness', 50);
 INSERT INTO `medical_condition` (`id`, `name`, `description`, `risk_factor`) VALUES (4, 'Leptospirosis', 'spirochete bacterial infection', 50);

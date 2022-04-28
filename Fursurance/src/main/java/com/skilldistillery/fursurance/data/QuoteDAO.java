@@ -15,6 +15,7 @@ public interface QuoteDAO {
 	public Quote createQuote(Quote quote, List<MedicalCondition> conditions, List<PetVaccination> vaccinations);
 	public List<Quote> createQuotes(Quote quote, List<MedicalCondition> conditions, List<PetVaccination> vaccinations);
 //	public Quote createQuote(Quote quote, List<MedicalCondition> conditions, List<Vaccine> vaccines);
+
 	public boolean deleteById(Quote q);
 	
 	

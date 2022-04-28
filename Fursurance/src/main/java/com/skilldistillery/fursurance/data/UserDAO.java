@@ -3,6 +3,7 @@ package com.skilldistillery.fursurance.data;
 import java.util.List;
 
 import com.skilldistillery.fursurance.entities.Address;
+import com.skilldistillery.fursurance.entities.Pet;
 import com.skilldistillery.fursurance.entities.Quote;
 import com.skilldistillery.fursurance.entities.User;
 
@@ -19,5 +20,7 @@ public interface UserDAO {
 	List<Quote> findQuoteByUser(User temp);
 
 	List<User> findAll();
+
+	List<Pet> findPetByUser(User temp);
 
 }
