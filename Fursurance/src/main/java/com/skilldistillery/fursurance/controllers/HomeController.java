@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,12 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.fursurance.data.PetDAO;
 import com.skilldistillery.fursurance.data.QuoteDAO;
@@ -166,14 +169,16 @@ public class HomeController {
 		User user = (User) session.getAttribute("user");
 
 		if (user != null) {
-			System.out.println("*******  PET **********");
+			//System.out.println("*******  PET **********");
 			Pet pet = quote.getPet();
+
 			System.out.println(pet);
 			System.out.println("*******  PET **********");
 
 			System.out.println("******* QUOTE **********");
 			System.out.println(quote);
 			System.out.println("******* QUOTE **********");
+
 
 			quote.setUser(user);
 			quote.getPet().setUser(user);
@@ -280,19 +285,30 @@ public class HomeController {
 	}
 
 	@RequestMapping("delete.do")
-	public String delete(HttpSession session, @RequestParam int quoteId, Model model) {
+	public String delete(HttpSession session, @RequestParam int quoteId, Model model,RedirectAttributes redirectAttrs) {
 		Quote temp = quoteDao.findById(quoteId);
 
 		boolean successful = quoteDao.deleteById(temp);
+		redirectAttrs.addFlashAttribute("successful", successful);
 		return "redirect:account.do";
 
 	}
 
 	@RequestMapping(path = "updatequote.do", method = RequestMethod.POST)
-	public String updateQuote(Quote quote, @RequestParam int quoteId) {
 
-		Quote updated = quoteDao.update(quoteId, quote);
+	public String updateQuote(Quote quote, @RequestParam int quoteId,RedirectAttributes redirectAttrs) {
+		
+		boolean quoteUpdated = quoteDao.update(quoteId, quote);
+		
+		redirectAttrs.addFlashAttribute("quoteUpdated", quoteUpdated);
 
 		return "redirect:account.do";
 	}
+	
+	@ExceptionHandler(Exception.class)
+	  public String handleError(HttpServletRequest req, Exception ex) {
+	    
+	    
+	    return "error";
+	  }
 }

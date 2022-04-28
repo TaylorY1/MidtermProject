@@ -10,8 +10,11 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/nav.jsp" />
-	<div class="container-fluid">
-			<div class="container p-5">
+	<div class="container"> 
+	<section class="w-100 p-4 d-flex justify-content-center pb-4">
+	<div class="container-fluid" style="width: 42rem;">
+			
+			
 	<!-- Pills navs -->
 	<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
 		<li class="nav-item" role="presentation"><a
@@ -119,6 +122,7 @@
 	</div>
 	<!-- Pills content -->
 </div>
+	</section>
 </div>
 
 	<jsp:include page="/WEB-INF/bootstrap-js.jsp" />

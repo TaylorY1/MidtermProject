@@ -8,7 +8,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
 <!--  Show this only on mobile to medium screens  -->
-  <a class="navbar-brand d-lg-none" href="/"><div><img src="" class="center">
+  <a class="navbar-brand d-lg-none" href="home.do"><div><img src="" class="center">
   
   
 <?xml version="1.0" encoding="utf-8"?>
@@ -100,13 +100,13 @@
 
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" href="/">Home         <span class="sr-only"></span></a>
+        <a class="nav-link active" href="home.do">Home         <span class="sr-only"></span></a>
       </li>
     </ul>
     
     
 <!--   Show this only lg screens and up   -->
-    <a class="navbar-brand d-none d-lg-block" href="/"><div style="line-height: 30px">
+    <a class="navbar-brand d-none d-lg-block" href="home.do"><div style="line-height: 30px">
     
     
 
