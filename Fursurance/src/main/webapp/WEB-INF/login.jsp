@@ -10,8 +10,11 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/nav.jsp" />
-	<div class="container-fluid">
-			<div class="container p-5">
+	<div class="container"> 
+	<section class="w-100 p-4 d-flex justify-content-center pb-4">
+	<div class="container-fluid" style="width: 42rem;">
+			
+			
 	<!-- Pills navs -->
 	<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
 		<li class="nav-item" role="presentation"><a
@@ -35,13 +38,13 @@
 				
 				<!-- Email input -->
 				<div class="form-outline mb-4">
-					<input type="text" name= "username" id="username" class="form-control" required/> <label
-						class="form-label" for="username" >Email or Username</label>
+					<input type="text" name= "username" id="username" class="form-control" /> <label
+						class="form-label" for="username">Email or Username</label>
 				</div>
 
 				<!-- Password input -->
 				<div class="form-outline mb-4">
-					<input type="password" name="password" id="password" class="form-control" required/> <label
+					<input type="password" name="password" id="password" class="form-control" /> <label
 						class="form-label" for="password">Password</label>
 				</div>
 
@@ -63,49 +66,49 @@
 
 				<!-- Name input -->
 				<div class="form-outline mb-4">
-					<input type="text" name="firstName" id="firstName" class="form-control" required /> <label
+					<input type="text" name="firstName" id="firstName" class="form-control" /> <label
 						class="form-label" for="firstName">First Name</label>
 				</div>
 				<div class="form-outline mb-4">
-					<input type="text" name="lastName" id="lastName" class="form-control" required/> <label
+					<input type="text" name="lastName" id="lastName" class="form-control" /> <label
 						class="form-label" for="lastName">Last Name</label>
 				</div>
 
 				<!-- Username input -->
 				<div class="form-outline mb-4">
-					<input type="text" name="username" id="username" class="form-control" required /> <label
+					<input type="text" name="username" id="username" class="form-control" /> <label
 						class="form-label" for="username">Username</label>
 				</div>
 
 				<!-- Email input -->
 				<div class="form-outline mb-4">
-					<input type="email" name="email" id="email" class="form-control" required/> <label
+					<input type="email" name="email" id="email" class="form-control" /> <label
 						class="form-label" for="email">Email</label>
 				</div>
 
 				<!-- Password input -->
 				<div class="form-outline mb-4">
-					<input type="password" name= "password" id="password" class="form-control" required/> <label
+					<input type="password" name= "password" id="password" class="form-control" /> <label
 						class="form-label" for="password">Password</label>
 				</div>
 				<div class="form-outline mb-4">
-					<input type="text" name= "street" id="street" class="form-control" required/> <label
+					<input type="text" name= "street" id="street" class="form-control" /> <label
 						class="form-label" for="street">Street</label>
 				</div>
 				<div class="form-outline mb-4">
-					<input type="text" name= "city" id="city" class="form-control" required/> <label
+					<input type="text" name= "city" id="city" class="form-control" /> <label
 						class="form-label" for="city">City</label>
 				</div>
 				<div class="form-outline mb-4">
-					<input type="text" name= "state" id="state" class="form-control" required/> <label
+					<input type="text" name= "state" id="state" class="form-control" /> <label
 						class="form-label" for="state">State</label>
 				</div>
 				<div class="form-outline mb-4">
-					<input type="text" name="postalCode" id="postalCode" class="form-control" required/> <label
+					<input type="text" name="postalCode" id="postalCode" class="form-control" /> <label
 						class="form-label" for="postalCode">Postal Code</label>
 				</div>
 				<div class="form-outline mb-4">
-					<input type="text" name="country" id="country" class="form-control" required/> <label
+					<input type="text" name="country" id="country" class="form-control" /> <label
 						class="form-label" for="country">Country</label>
 				</div>
 
@@ -119,6 +122,7 @@
 	</div>
 	<!-- Pills content -->
 </div>
+	</section>
 </div>
 
 	<jsp:include page="/WEB-INF/bootstrap-js.jsp" />
