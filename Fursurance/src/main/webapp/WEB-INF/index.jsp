@@ -36,8 +36,9 @@
 
 				</div>
 			</div>
-		<div class="px-4 pt-5 my-5 text-center border-bottom"
+		<div class="px-4 pt-5 my-5 text-center"
 			style="background-color: #cccccc; margin-top: 0px;">
+
 			<p></p>
 			<h2>Meet The Fursurance Team</h2>
 			<a href="anthonybio.jsp">CEO: Anthony Butler</a>
@@ -52,7 +53,7 @@
 			
 			<p>Phone: 1-800-FURSURANCE</p>
 			<p>Email: Support_SmileyPups@Fursurance.com</p>
-		
+
 			
 			
 			
