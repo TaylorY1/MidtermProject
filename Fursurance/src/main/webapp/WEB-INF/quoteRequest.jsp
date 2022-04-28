@@ -24,7 +24,7 @@ You are logged in as: ${user.username}
 <div class="container px-5 my-5">
     <form action="createQuotes.do" id="createQuote" method="POST">
         <div class="form-floating mb-3">
-            <select class="form-select" name="pet.species.id" id="species" aria-label="Pet Type">
+            <select class="form-select" name="pet.species.id" id="species" aria-label="Pet Type" required>
                 <option value="1">Dog</option>
                 <option value="2">Cat</option>
                 <option value="3">Other</option>
@@ -33,7 +33,7 @@ You are logged in as: ${user.username}
         </div>
         
           <div class="form-floating mb-3">
-            <input class="form-control" id="petsName" name="pet.name" type="text" placeholder="Pet&#x27;s Name" data-sb-validations="required" />
+            <input class="form-control" id="petsName" name="pet.name" type="text" placeholder="Pet&#x27;s Name" data-sb-validations="required" required/>
             <label for="petsName">Pet&#x27;s Name</label>
             <div class="invalid-feedback" data-sb-feedback="petsName:required">Pet&#x27;s Name is required.</div>
         </div>
@@ -43,7 +43,7 @@ You are logged in as: ${user.username}
         <label for="date" class="col-1 col-form-label">Pet's Birthday</label>
     <div class="col-5">
       <div class="input-group date" id="datepicker">
-        <input type="date" name="pet.birthdate" class="form-control" id="date"/>
+        <input type="date" name="pet.birthdate" class="form-control" id="date" required/>
         <span class="input-group-append">
 <!--           <span class="input-group-text bg-light d-block">
             <i class="fa fa-calendar"></i>
@@ -67,17 +67,17 @@ You are logged in as: ${user.username}
             <label class="form-label d-block">Pet&#x27;s Gender</label>
             <div class="form-check form-check-inline">
             
-                <input class="form-check-input" value="male" type="radio" name="pet.gender"  />
+                <input class="form-check-input" value="male" type="radio" name="pet.gender" required />
                 <label class="form-check-label" for="male">Male</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" value="female" type="radio" name="pet.gender"  />
+                <input class="form-check-input" value="female" type="radio" name="pet.gender"  required/>
                 <label class="form-check-label" for="female">Female</label>
             </div>
         </div> 
         <div class="form-floating mb-3">
         
-            <select class="form-select" name="pet.breed.id" id="breed" aria-label="Pet&#x27;s Breed">
+            <select class="form-select" name="pet.breed.id" id="breed" aria-label="Pet&#x27;s Breed" required>
         	<c:forEach items="${breeds }" var="breed" >
                 <option value="${breed.id }">${breed.name }</option>
 				
@@ -91,7 +91,7 @@ You are logged in as: ${user.username}
             <label class="form-label d-block">Conditions</label>
             	<c:forEach items="${conditions}" var="condition">
             	<div class="form-check form-check-inline">
-                	<input class="form-check-input" value="${condition.id}" type="checkbox" name="conditions" />
+                	<input class="form-check-input" value="${condition.id}" type="checkbox" name="conditions"/>
                 	<label class="form-check-label" for="worms">${condition.name}</label>
                 </div>
                 </c:forEach>
