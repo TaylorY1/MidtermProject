@@ -25,7 +25,7 @@ body {
 
 /* https://www.flaticon.com/authors/vectors-market */
 /* https://www.flaticon.com/authors/icomoon */
-.box {
+/* .box {
   max-width: 70%;
   min-height: auto;
   margin: 0 auto;
@@ -33,7 +33,7 @@ body {
   text-align: center;
   background: url("https://www.dropbox.com/s/xq0841cp3icnuqd/flame.png?raw=1") no-repeat top 10em center/128px 128px,
               transparent url("https://www.dropbox.com/s/w7qqrcvhlx3pwnf/desktop-pc.png?raw=1") no-repeat top 13em center/128px 128px;
-}
+} */
 
 h1, p:not(:last-of-type) { text-shadow: 0 0 6px #216f79; }
 
