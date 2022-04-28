@@ -35,7 +35,7 @@
 			</div>
 		<div class="px-4 pt-5 my-5 text-center border-bottom"
 			style="background-color: #cccccc; margin-top: 0px;">
-			<p></p>
+			
 			
 			
 			</div>
