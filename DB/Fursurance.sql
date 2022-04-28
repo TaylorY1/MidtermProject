@@ -135,9 +135,9 @@ CREATE TABLE IF NOT EXISTS `plan` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `description` VARCHAR(500) NULL,
-  `base_premium` DOUBLE NULL,
-  `deductible` DOUBLE NULL,
-  `base_coverage` DOUBLE NULL,
+  `base_premium` DECIMAL(6,2) NULL,
+  `deductible` DECIMAL(6,2) NULL,
+  `base_coverage` DECIMAL(6,2) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -150,8 +150,8 @@ DROP TABLE IF EXISTS `plan_tier` ;
 CREATE TABLE IF NOT EXISTS `plan_tier` (
   `id` INT NOT NULL,
   `name` VARCHAR(45) NULL,
-  `coverage_adjustment` DOUBLE NULL,
-  `deductible_adjustment` DOUBLE NULL,
+  `coverage_adjustment` DECIMAL(6,2) NULL,
+  `deductible_adjustment` DECIMAL(6,2) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

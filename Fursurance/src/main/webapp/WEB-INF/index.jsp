@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Fursurance</title>
 <jsp:include page="/WEB-INF/bootstraphead.jsp" />
+<link rel="stylesheet" href="css/index.css"/>
 </head>
 
 
@@ -36,6 +37,21 @@
 		<div class="px-4 pt-5 my-5 text-center border-bottom"
 			style="background-color: #cccccc; margin-top: 0px;">
 			<p></p>
+			<h2>Meet The Fursurance Team</h2>
+			<a href="anthonybio.jsp">CEO: Anthony Butler</a>
+			<br><br>
+			<a href="chasebio.jsp">COO: Chase Schwatka</a>
+			<br><br>
+			<a href="taylorbio.jsp">Lead Insurance Broker: Taylor Yockey</a>
+			<br><br>
+			<a href="danielbio.jsp">Head of Marketing: Daniel Kregstein</a>
+			<br><br>
+			<h3>Contact Information</h3>
+			
+			<p>Phone: 1-800-FURSURANCE</p>
+			<p>Email: Support_SmileyPups@Fursurance.com</p>
+		
+			
 			
 			
 			</div>
