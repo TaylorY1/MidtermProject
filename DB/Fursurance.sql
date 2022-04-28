@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `address` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `street` VARCHAR(45) NULL,
   `city` VARCHAR(45) NULL,
-  `state` CHAR(2) NULL,
+  `state` VARCHAR(100) NULL,
   `postal_code` VARCHAR(45) NULL,
   `country` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
