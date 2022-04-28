@@ -31,7 +31,9 @@
 			<div><!-- class="overflow-hidden" style="max-height: 30vh;" -->
 				<div class="container px-5">
 					<img src="../media/pet-hero.png" class="img-fluid  rounded-3 mb-4"
-						alt="Example image" width="700" height="500" loading="real fast">
+
+						alt="Example image" width="700" height="500" loading="lazy">
+
 				</div>
 			</div>
 		<div class="px-4 pt-5 my-5 text-center border-bottom"
