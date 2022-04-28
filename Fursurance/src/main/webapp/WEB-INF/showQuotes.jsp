@@ -13,16 +13,14 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/nav.jsp" />
-<h1>Please select which quote you would like: </h1>
+
 <c:forEach items="${quotes }" var="quote"	>
-${quote }
+
 
 
 
 </c:forEach>
 
-
-Quotes:
 <c:choose>
 		<c:when test="${!empty quotes}">
 			 <div class="container-fluid">
@@ -40,7 +38,7 @@ Quotes:
 										<ul>
 											<li>Annual Deductible: <fmt:formatNumber value = "${q.deductible}" type = "currency"/></li>
 											<li>Annual Coverage: <fmt:formatNumber value = "${q.plan.baseCoverage}" type = "currency"/></li>
-											<li>Date of Eligibility: ${q.quoteDate} </li>
+											<li>Date: ${q.quoteDate} </li>
 
 										</ul>
 									</div>

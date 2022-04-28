@@ -1,5 +1,6 @@
 package com.skilldistillery.fursurance.data;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,6 +136,8 @@ public class QuoteDAOImpl implements QuoteDAO {
 		
 		
 		
+		
+		bronzeQuote.setQuoteDate(LocalDateTime.now());
 		bronzeQuote.setUser(quote.getUser());
 		bronzeQuote.setPlan(em.find(Plan.class, 1)); 
 		bronzeQuote.setRiskScore(riskScore); 
@@ -148,6 +151,7 @@ public class QuoteDAOImpl implements QuoteDAO {
 		System.out.println("******* bronzeQuote **********");
 		
 		Quote silverQuote = new Quote();
+		silverQuote.setQuoteDate(LocalDateTime.now());
 		silverQuote.setUser(quote.getUser());
 		silverQuote.setPlan(em.find(Plan.class, 2)); 
 		silverQuote.setRiskScore(riskScore); 
@@ -161,6 +165,7 @@ public class QuoteDAOImpl implements QuoteDAO {
 		System.out.println("******* silverQuote **********");
 		
 		Quote goldQuote = new Quote();
+		goldQuote.setQuoteDate(LocalDateTime.now());
 		goldQuote.setUser(quote.getUser());
 		goldQuote.setPlan(em.find(Plan.class, 3)); 
 		goldQuote.setRiskScore(riskScore);
