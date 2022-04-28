@@ -19,10 +19,10 @@
 Today is: <fmt:formatDate value="${date}" type="date" pattern="dd-MMM-yyyy"/><br />
 You are logged in as: ${user.username}
 
-<div class="container-sm">
+<div class="container"> 
+	<section class="w-100 p-4 d-flex justify-content-center pb-4">
 
-<div class="container px-5 my-5">
-    <form action="createQuotes.do" id="createQuote" method="POST">
+    <form style="width: 42rem;" action="createQuotes.do" id="createQuote" method="POST">
         <div class="form-floating mb-3">
             <select class="form-select" name="pet.species.id" id="species" aria-label="Pet Type" required>
                 <option value="1">Dog</option>
@@ -139,9 +139,10 @@ You are logged in as: ${user.username}
             <button class="btn btn-primary btn-lg " id="submitButton" type="submit" value= "createQuotes">Submit</button>
         </div>
     </form>
-</div>
+	
+	</section>
 
-</div>
+</div> 
 <jsp:include page="/WEB-INF/bootstrap-js.jsp" />
 </body>
 </html>
