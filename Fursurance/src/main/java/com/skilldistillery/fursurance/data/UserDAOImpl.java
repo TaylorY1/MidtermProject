@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.fursurance.entities.Address;
+import com.skilldistillery.fursurance.entities.Pet;
 import com.skilldistillery.fursurance.entities.Quote;
 import com.skilldistillery.fursurance.entities.User;
 
@@ -70,6 +71,16 @@ public class UserDAOImpl implements UserDAO {
 	public List<User> findAll() {
 		String jpql = "SELECT u FROM User u";
 		return em.createQuery(jpql, User.class).getResultList();
+	}
+
+	@Override
+	public List<Pet> findPetByUser(User temp) {
+		String query = "Select p from Pet p where user_id = :userid";
+		List<Pet> pets = em.createQuery(query, Pet.class).setParameter("userid", temp.getId()).getResultList();
+		if(pets.size()>0) {
+			return pets;
+		}
+		return null;
 	}
 	
 

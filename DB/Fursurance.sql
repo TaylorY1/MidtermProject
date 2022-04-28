@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `quote` (
   `risk_score` DOUBLE NULL,
   `coupon_code` VARCHAR(45) NULL,
   `user_id` INT NOT NULL,
-  `premium` DOUBLE NULL,
+  `premium` DECIMAL(8,2) NULL,
   `pet_id` INT NOT NULL,
   `quote_date` DATETIME NULL,
   `coverage` INT NULL,

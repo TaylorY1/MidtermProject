@@ -265,6 +265,8 @@ public class HomeController {
 			return "account";
 		} else {
 			List<Quote> quotes = userDao.findQuoteByUser(temp);
+			List<Pet>pets = userDao.findPetByUser(temp);
+			model.addAttribute("pets", pets);
 			model.addAttribute("quotes", quotes);
 			return "account";
 		}
