@@ -34,7 +34,7 @@
 						alt="Example image" width="700" height="500" loading="fast as fuck boiiiiii">
 				</div>
 			</div>
-		<div class="px-4 pt-5 my-5 text-center border-bottom"
+		<div class="px-4 pt-5 my-5 text-center"
 			style="background-color: #cccccc; margin-top: 0px;">
 
 			<p></p>

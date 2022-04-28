@@ -40,6 +40,22 @@
 	</c:if>
 
 	<c:if test="${sessionScope.user.username == 'admin' }">
+		<c:if test="${successful}">
+			<div class="alert alert-danger alert-dismissible fade show"
+				role="alert">
+				<strong>Quote deleted</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+			</div>
+		</c:if>
+		<c:if test="${quoteUpdated}">
+			<div class="alert alert-warning alert-dismissible fade show"
+				role="alert">
+				<strong>Quote Updated</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+			</div>
+		</c:if>
 		<div class="container-fluid">
 			<div class="container p-5">
 
@@ -63,8 +79,10 @@
 								<td>${quote.tier.name }</td>
 								<td>${quote.deductible }</td>
 								<td>${quote.premium}</td>
-								<td><a href="update.do?quoteId=${quote.id}"><button type="button" class="btn btn-warning">Update</button></a></td>
-								<td><a href="delete.do?quoteId=${quote.id}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+								<td><a href="update.do?quoteId=${quote.id}"><button
+											type="button" class="btn btn-warning">Update</button></a></td>
+								<td><a href="delete.do?quoteId=${quote.id}"><button
+											type="button" class="btn btn-danger">Delete</button></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
