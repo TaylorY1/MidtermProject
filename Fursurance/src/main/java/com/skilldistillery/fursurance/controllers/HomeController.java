@@ -45,7 +45,7 @@ public class HomeController {
 
 	@Autowired
 	private QuoteDAO quoteDao;
-	
+
 	@Autowired
 	private PetDAO petDao;
 
@@ -99,28 +99,21 @@ public class HomeController {
 	@RequestMapping("getQuote.do")
 	public String getQuote(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		
-		
+
 		if (user != null) {
-			
-		
-			
-			
-			
+
 			List<MedicalCondition> conditions = petDao.getConditions();
 			model.addAttribute("conditions", conditions);
-			
+
 			List<PetVaccination> vaccinations = petDao.getVaccinations();
 			model.addAttribute("vaccinations", vaccinations);
-			
+
 			List<Vaccine> vaccines = petDao.getVaccines();
 			model.addAttribute("vaccines", vaccines);
-			
+
 			List<Breed> breeds = petDao.getBreeds();
 			model.addAttribute("breeds", breeds);
-			
-			
-			
+
 			return "quoteRequest";
 		} else {
 			return "login";
@@ -134,23 +127,22 @@ public class HomeController {
 
 		return "showQuotes"; // session determines which view
 	}
-	
-	
 
 	@RequestMapping(path = "createQuote.do", method = RequestMethod.POST)
-	public String createQuote(Quote quote, Model model, int[] conditions, int[] vaccinations, int[] vaccines, HttpSession session) {
+	public String createQuote(Quote quote, Model model, int[] conditions, int[] vaccinations, int[] vaccines,
+			HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		
+
 		if (user != null) {
 			Pet pet = quote.getPet();
 			quote.setUser(user);
 			quote.getPet().setUser(user);
-			
+
 			List<MedicalCondition> conditionsForPet = new ArrayList<>();
 			for (int i : conditions) {
 				conditionsForPet.add(petDao.getCondition(i));
 			}
-			
+
 			List<PetVaccination> vaccinationsForPet = new ArrayList<>();
 
 			for (int i : vaccines) {
@@ -158,9 +150,9 @@ public class HomeController {
 				pv.setVaccine(petDao.getVaccine(i));
 				pet.addVaccination(pv);
 			}
-			
+
 			System.out.println(pet.getVaccinations());
-			
+
 			quoteDao.createQuote(quote, conditionsForPet, vaccinationsForPet);
 			model.addAttribute("quote", quote);
 			return "showQuotes";
@@ -170,32 +162,32 @@ public class HomeController {
 		}
 
 	}
-	
-	
-	
-	
+
 	@RequestMapping(path = "createQuotes.do", method = RequestMethod.POST)
-	public String createQuotes(Quote quote, Model model, int[] conditions, int[] vaccinations, int[] vaccines, HttpSession session) {
+	public String createQuotes(Quote quote, Model model, int[] conditions, int[] vaccinations, int[] vaccines,
+			HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		
+
 		if (user != null) {
 			//System.out.println("*******  PET **********");
 			Pet pet = quote.getPet();
-			//System.out.println(pet);
-			//System.out.println("*******  PET **********");
-			
-			//System.out.println("******* QUOTE **********");
+
+			System.out.println(pet);
+			System.out.println("*******  PET **********");
+
+			System.out.println("******* QUOTE **********");
 			System.out.println(quote);
-			//System.out.println("******* QUOTE **********");
-			
+			System.out.println("******* QUOTE **********");
+
+
 			quote.setUser(user);
 			quote.getPet().setUser(user);
-			
+
 			List<MedicalCondition> conditionsForPet = new ArrayList<>();
 			for (int i : conditions) {
 				conditionsForPet.add(petDao.getCondition(i));
 			}
-			
+
 			List<PetVaccination> vaccinationsForPet = new ArrayList<>();
 
 			for (int i : vaccines) {
@@ -203,9 +195,9 @@ public class HomeController {
 				pv.setVaccine(petDao.getVaccine(i));
 				pet.addVaccination(pv);
 			}
-			
+
 			System.out.println(pet.getVaccinations());
-			
+
 			List<Quote> quotes = quoteDao.createQuotes(quote, conditionsForPet, vaccinationsForPet);
 			model.addAttribute("quotes", quotes);
 			return "showQuotes";
@@ -216,7 +208,6 @@ public class HomeController {
 
 	}
 
-
 	@RequestMapping("login.do")
 	public String login(Model model) {
 		return "login";
@@ -225,11 +216,21 @@ public class HomeController {
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public String checkUser(@RequestParam String username, @RequestParam String password, HttpSession session) {
 		User managed = userDao.findByCredentials(username, password);
-		if (managed != null) {
+		if (managed != null && !managed.getUsername().equals("admin") && managed.getQuotes().size() > 0) {
+
+			session.setAttribute("user", managed);
+			return "redirect:account.do";
+		} else if (managed != null && !managed.getUsername().equals("admin")) {
 			session.setAttribute("user", managed);
 			return "redirect:getQuote.do";
+		} else if (managed.getUsername().equals("admin")) {
+			session.setAttribute("user", managed);
+			return "redirect:account.do";
+		} else {
+			return "login";
+
 		}
-		return "login";
+
 	}
 
 	@RequestMapping("register.do")
@@ -244,7 +245,7 @@ public class HomeController {
 			if (successful) {
 				User persistedUser = userDao.findByFullName(user.getFirstName(), user.getLastName());
 				session.setAttribute("user", persistedUser);
-				return "account";
+				return "quoteRequest";
 			}
 			return "login";
 		}
@@ -257,7 +258,7 @@ public class HomeController {
 		return "index";
 	}
 
-	@RequestMapping(path={"account.do","account"})
+	@RequestMapping(path = { "account.do", "account" })
 	public String account(HttpSession session, Model model) {
 		User temp = (User) session.getAttribute("user");
 		if (temp.getUsername().equalsIgnoreCase("admin")) {
@@ -268,14 +269,14 @@ public class HomeController {
 			return "account";
 		} else {
 			List<Quote> quotes = userDao.findQuoteByUser(temp);
-			List<Pet>pets = userDao.findPetByUser(temp);
+			List<Pet> pets = userDao.findPetByUser(temp);
 			model.addAttribute("pets", pets);
 			model.addAttribute("quotes", quotes);
 			return "account";
 		}
 	}
 
-	@RequestMapping(path={"update.do"})
+	@RequestMapping(path = { "update.do" })
 	public String update(HttpSession session, Model model, @RequestParam int quoteId) {
 		Quote temp = quoteDao.findById(quoteId);
 		model.addAttribute("quoteToUpdate", temp);
@@ -291,16 +292,16 @@ public class HomeController {
 		redirectAttrs.addFlashAttribute("successful", successful);
 		return "redirect:account.do";
 
-	
-
-		
 	}
+
 	@RequestMapping(path = "updatequote.do", method = RequestMethod.POST)
+
 	public String updateQuote(Quote quote, @RequestParam int quoteId,RedirectAttributes redirectAttrs) {
 		
 		boolean quoteUpdated = quoteDao.update(quoteId, quote);
 		
 		redirectAttrs.addFlashAttribute("quoteUpdated", quoteUpdated);
+
 		return "redirect:account.do";
 	}
 	
