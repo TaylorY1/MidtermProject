@@ -40,14 +40,14 @@ You are logged in as: ${user.username}
         
         
         
-        <label for="date" class="col-1 col-form-label">Date</label>
+        <label for="date" class="col-1 col-form-label">Pet's Birthday</label>
     <div class="col-5">
       <div class="input-group date" id="datepicker">
         <input type="date" name="pet.birthdate" class="form-control" id="date"/>
         <span class="input-group-append">
-          <span class="input-group-text bg-light d-block">
+<!--           <span class="input-group-text bg-light d-block">
             <i class="fa fa-calendar"></i>
-          </span>
+          </span> -->
         </span>
       </div>
     </div>
