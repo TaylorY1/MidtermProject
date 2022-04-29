@@ -30,12 +30,15 @@
 			</div>
 			<div><!-- class="overflow-hidden" style="max-height: 30vh;" -->
 				<div class="container px-5">
-					<img src="../media/pet-hero.png" class="img-fluid  rounded-3 mb-4"
-						alt="Example image" width="700" height="500" loading="real fast">
+					<img src="media/pet-hero.png" class="img-fluid  rounded-3 mb-4"
+
+						alt="Example image" width="700" height="500" loading="lazy">
+
 				</div>
 			</div>
-		<div class="px-4 pt-5 my-5 text-center border-bottom"
+		<div class="px-4 pt-5 my-5 text-center"
 			style="background-color: #cccccc; margin-top: 0px;">
+
 			<p></p>
 			<h2>Meet The Fursurance Team</h2>
 			<a href="anthonybio.jsp">CEO: Anthony Butler</a>
@@ -50,7 +53,7 @@
 			
 			<p>Phone: 1-800-FURSURANCE</p>
 			<p>Email: Support_SmileyPups@Fursurance.com</p>
-		
+
 			
 			
 			

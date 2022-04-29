@@ -56,6 +56,22 @@
 	</c:if>
 
 	<c:if test="${sessionScope.user.username == 'admin' }">
+		<c:if test="${successful}">
+			<div class="alert alert-danger alert-dismissible fade show"
+				role="alert">
+				<strong>Quote deleted</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+			</div>
+		</c:if>
+		<c:if test="${quoteUpdated}">
+			<div class="alert alert-warning alert-dismissible fade show"
+				role="alert">
+				<strong>Quote Updated</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+			</div>
+		</c:if>
 		<div class="container-fluid">
 			<div class="container p-5">
 

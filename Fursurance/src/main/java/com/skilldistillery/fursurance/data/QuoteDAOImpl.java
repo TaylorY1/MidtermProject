@@ -37,7 +37,7 @@ public class QuoteDAOImpl implements QuoteDAO {
 	}
 
 	@Override
-	public Quote update(int id, Quote quote) {
+	public boolean update(int id, Quote quote) {
 		Quote managed = em.find(Quote.class, id); // refactor with merge later
 		managed.setDeductible(quote.getDeductible());
 		managed.setRiskScore(quote.getRiskScore());
@@ -48,7 +48,7 @@ public class QuoteDAOImpl implements QuoteDAO {
 		// managed.setPlan(quote.getPlan());
 		// managed.setUser(quote.getUser());
 		// managed.setPet(em.find(Pet.class, quote.getPet().getId()));
-		return managed;
+		return true;
 	}
 
 	@Override
